@@ -1,0 +1,72 @@
+section {
+    padding: 2rem 9%;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
+    border: var(--border);
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    cursor: pointer;
+    font-size: 1.7rem;
+    transition: background 0.3s ease, color 0.3s ease; /* Transición para hover */
+}
+
+.btn span {
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--green);
+    color: #fff;
+    margin-left: 0.5rem;
+    transition: background 0.3s ease, color 0.3s ease; /* Transición para hover */
+}
+
+.btn:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.btn:hover span {
+    color: var(--green);
+    background: #fff;
+}
+
+.home {
+    display: flex;
+    align-items: center;  /* Alinea verticalmente */
+    flex-wrap: wrap;       /* Permite envolver en pantallas pequeñas */
+    gap: 1.5rem;
+    padding-top: 10rem;
+}
+
+.home .image { /* Usa una clase para la imagen */
+    flex: 1 1 45rem; /* Ajusta el tamaño según necesites */
+    max-width: 45%;    /* Evita que la imagen se haga demasiado grande */
+}
+
+.home .image img {
+    width: 100%;
+    display: block;  /* Evita espacios en blanco debajo de la imagen */
+}
+
+.home .content { /* Usa una clase para el contenido */
+    flex: 1 1 45rem; /* Ajusta el tamaño según necesites */
+}
+
+.home .content h3 {
+    font-size: 3.5rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+}
+
+.home .content p {
+    font-size: 1.7rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+}
