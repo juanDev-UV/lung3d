@@ -11,6 +11,7 @@ import PulmonaryFibrosis from "./pages/lung/pulmonary-fribrosis/PulmonaryFibrosi
 import "./index.css";
 import Layout from "./layout/Layout";
 import Login from "./pages/login/Login.jsx";
+import Diseases from "./pages/diseases/Diseases.jsx";
 
 // import App from "./App";
 
@@ -23,6 +24,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="quiz" element={<Quiz />} />
         <Route path="*" element={<NotFound />} />
         <Route path="iniciar-sesion" element={<Login />} />
+        <Route path="enfermedades" element={<Diseases/>}/>
         <Route path="pulmon" element={<Lung />}>
           <Route path="asma" element={<Asthma />} />
           <Route path="bronquitis" element={<Bronchitis />} />

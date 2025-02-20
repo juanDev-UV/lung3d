@@ -1,0 +1,58 @@
+section {
+    padding: 2rem 9%;
+}
+
+.diseases {
+    display: flex;
+    align-items: center;  /* Alinea verticalmente */
+    flex-wrap: wrap;       /* Permite envolver en pantallas pequeñas */
+    gap: 1.5rem;
+    padding-top: 10rem;
+}
+
+.diseases .image { /* Usa una clase para la imagen */
+    flex: 1 1 45rem; /* Ajusta el tamaño según necesites */
+    max-width: 45%;    /* Evita que la imagen se haga demasiado grande */
+}
+
+.diseases .image img {
+    width: 100%;
+    display: block;  /* Evita espacios en blanco debajo de la imagen */
+}
+
+.diseases .content {
+    margin-top: -200px;
+    flex: 1 1 45rem;
+}
+
+.diseases .content h3 {
+    font-size: 4rem;
+    margin-bottom: 4px;
+    color: var(--black);
+    line-height: 2;
+    text-shadow: var(--text-shadow);
+}
+
+.text1 {
+    float: left
+}
+
+.text2 {
+    float: right
+}
+
+.diseases .content h1 {
+    font-size: 2rem;
+    line-height: 1.8;
+    margin-top: 50px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.diseases .content p {
+    font-size: 1.7rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+}

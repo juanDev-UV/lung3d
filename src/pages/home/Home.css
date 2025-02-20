@@ -54,7 +54,8 @@ section {
 }
 
 .home .content { /* Usa una clase para el contenido */
-    flex: 1 1 45rem; /* Ajusta el tamaño según necesites */
+    flex: 1 1 45rem;
+    margin-top: -100px; /* Ajusta el tamaño según necesites */
 }
 
 .home .content h3 {

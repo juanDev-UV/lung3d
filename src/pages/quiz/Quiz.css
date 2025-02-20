@@ -1,0 +1,55 @@
+.quiz .btn2 {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
+    border: var(--border);
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    cursor: pointer;
+    margin-left: 87.5rem;
+    font-size: 1.7rem;
+    margin-bottom: 17.6rem;
+    transition: background 0.3s ease, color 0.3s ease; /* Transición para hover */
+}
+
+
+.quiz .btn2:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.quiz .btn2:hover span {
+    color: var(--green);
+    background: #fff;
+}
+
+.quiz .content {
+    display: flex;
+    align-items: center;  /* Alinea verticalmente */
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    padding-top: 10rem; 
+}
+
+.quiz h1{
+    display: flex;
+    font-size: 10rem;
+    margin-top: 10rem;
+    padding-top: 10rem;
+    margin-bottom: 4px;
+    margin-left: 80rem;
+    color: var(--black);
+    line-height: 2;
+}
+
+.quiz .content .span1{
+    display: flex;
+    font-size: 5rem;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    margin-left: 650px;
+}
+

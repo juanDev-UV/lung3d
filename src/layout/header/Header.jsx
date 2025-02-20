@@ -1,13 +1,13 @@
 import { NavLink } from "react-router";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeartbeat } from "@fortawesome/free-solid-svg-icons";
+import { faLungs } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
     <header>
-      <div className="logo">
-        <FontAwesomeIcon icon={faHeartbeat} /> Respira3D.
+      <div className="logo" >
+        <FontAwesomeIcon icon={faLungs} /> Respira3D
       </div>
       <nav>
       <NavLink to="/" className="nav-item">
@@ -27,7 +27,7 @@ const Header = () => {
         </NavLink>
       </nav>
     </header>
-  );
+  ); 
 };
 
 export default Header;
