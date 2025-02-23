@@ -23,7 +23,7 @@ const Header = () => {
           Acerca de nosotros
         </NavLink>
         <NavLink to="/iniciar-sesion" className="nav-item">
-          Iniciar seion/Registrarse
+          Iniciar sesion/Registrarse
         </NavLink>
       </nav>
     </header>

@@ -3,21 +3,26 @@ section {
 }
 
 .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 1.5rem;
-    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin-top: 2rem;
+    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem; /* Ajusta el padding-left si es necesario */
     border: var(--border);
-    border-radius: 0.5rem;
+    border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     color: var(--green);
     cursor: pointer;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     transition: background 0.3s ease, color 0.3s ease; /* Transición para hover */
 }
 
 .btn span {
     padding: 0.7rem 1rem;
+
     border-radius: 0.5rem;
     background: var(--green);
     color: #fff;
