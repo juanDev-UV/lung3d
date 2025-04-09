@@ -24,7 +24,7 @@ const Home = () => {
           </p>
   
           <a href="/" className="btn">
-            Descubre la Salud de tus Pulmones
+            Explora Tus Pulmones en 3D
             <span className="icon">
               <FontAwesomeIcon icon={faChevronRight} />
             </span>

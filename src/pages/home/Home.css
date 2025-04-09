@@ -1,5 +1,6 @@
 section {
     padding: 2rem 9%;
+
 }
 
 .btn {
@@ -46,6 +47,7 @@ section {
     flex-wrap: wrap;       /* Permite envolver en pantallas pequeñas */
     gap: 1.5rem;
     padding-top: 10rem;
+    padding-bottom: 3em;
 }
 
 .home .image { /* Usa una clase para la imagen */

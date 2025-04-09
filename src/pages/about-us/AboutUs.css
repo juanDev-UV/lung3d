@@ -1,0 +1,69 @@
+section {
+    padding: 2rem 9%;
+}
+
+.about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 13rem;
+    padding-bottom: 7rem;
+}
+
+/* Asegura que en pantallas grandes, la imagen esté a la derecha */
+@media (min-width: 768px) {
+    .about-us {
+        flex-direction: row-reverse; /* Imagen a la derecha */
+        align-items: center;
+    }
+}
+
+.about-us .image-about-us {
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    justify-content: right; /* Centra la imagen */
+}
+
+.about-us .image-about-us img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex; /* Evita espacios en blanco debajo de la imagen */
+}
+
+.about-us .content {
+    flex: 1;
+    max-width: 60%;
+    text-align: justify; /* Asegura alineación del texto */
+}
+
+.about-us .content h3 {
+    font-size: 5rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+}
+
+
+
+.about-us .content p {
+    font-size: 2rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+.custom-list {
+    list-style-type: disc; /* Usa viñetas estándar */
+    font-size: 1.1rem; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+    padding-left: 20px; /* Espaciado de la lista */
+    line-height: 1.8; /* Espaciado entre líneas */
+}
+
+.custom-list li {
+    margin-bottom: 5px; /* Espacio entre elementos */
+}
+

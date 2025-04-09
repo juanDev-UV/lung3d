@@ -6,6 +6,10 @@ html, body {
     height: 100%;
   }
   
+  .footer{
+    position: relative;
+  }
+  
   /* Estilos para la lista de enlaces */
   .footer ul {
     list-style: none; /* Elimina los puntos de la lista */

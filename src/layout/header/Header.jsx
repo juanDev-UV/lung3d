@@ -9,7 +9,7 @@ const Header = () => {
       <div className="logo" >
         <FontAwesomeIcon icon={faLungs} /> Respira3D
       </div>
-      <nav>
+      <nav className="content-nav">
       <NavLink to="/" className="nav-item">
           Inicio
         </NavLink>
@@ -19,13 +19,13 @@ const Header = () => {
         <NavLink to="/quiz" className="nav-item">
           Quiz interactivo
         </NavLink>
-        <NavLink to="/about-us" className="nav-item">
+        <NavLink to="/acerca-de-nosotros" className="nav-item">
           Acerca de nosotros
         </NavLink>
-        <NavLink to="/iniciar-sesion" className="nav-item">
-          Iniciar sesion/Registrarse
-        </NavLink>
       </nav>
+      <a href="/iniciar-sesion" className="button-login">
+        Iniciar Sesion
+      </a>
     </header>
   ); 
 };
