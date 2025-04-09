@@ -12,6 +12,7 @@ import "./index.css";
 import Layout from "./layout/Layout";
 import Login from "./pages/login/Login.jsx";
 import Diseases from "./pages/diseases/Diseases.jsx";
+import AboutUs from "./pages/about-us/AboutUs.jsx";
 
 // import App from "./App";
 
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="*" element={<NotFound />} />
         <Route path="iniciar-sesion" element={<Login />} />
         <Route path="enfermedades" element={<Diseases/>}/>
+        <Route path="acerca-de-nosotros" element={<AboutUs />} />
         <Route path="pulmon" element={<Lung />}>
           <Route path="asma" element={<Asthma />} />
           <Route path="bronquitis" element={<Bronchitis />} />

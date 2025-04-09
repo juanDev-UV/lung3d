@@ -1,16 +1,27 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import './Login.css';
+import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLungs } from "@fortawesome/free-solid-svg-icons";
+import useAuthStore from '../../stores/use-auth-store';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const {loginGoogleWithPopUp} = useAuthStore();
+  const navigate = useNavigate();
+
+  const handleLogin = useCallback(() => {
+    loginGoogleWithPopUp()
+      .then(() => navigate("/enfermedades"))
+      .catch(() => navigate("/"));
+  }, [loginGoogleWithPopUp, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Aquí puedes agregar la lógica para enviar los datos del formulario
     console.log('Enviando datos:', { username, password });
+  
   };
 
         <div className="logo">
@@ -53,16 +64,12 @@ const Login = () => {
           </button>
           <br/>
           <label style={{fontSize: 15}}>- O -</label>
-          <a className= "login-button-google">
+          <a className= "login-button-google" 
+              type = "button" 
+              onClick={handleLogin}>
             Google<img src = "/images/icon-google.svg"/>
           </a>
           </div>
-          {/*  <div className= "container-login-button">
-            <button type="submit" className="login-button-google">
-              Google
-            </button>*/}
-
-
         </form>
       </div>
     </div>
