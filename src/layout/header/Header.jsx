@@ -2,8 +2,11 @@ import { NavLink } from "react-router";
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLungs } from "@fortawesome/free-solid-svg-icons";
+import useAuthStore from "../../stores/use-auth-store";
 
 const Header = () => {
+  const { userLooged } = useAuthStore();
+
   return (
     <header>
       <div className="logo" >
@@ -16,16 +19,24 @@ const Header = () => {
         <NavLink to="/enfermedades" className="nav-item">
           Enfermedades
         </NavLink>
+        { userLooged && (
         <NavLink to="/quiz" className="nav-item">
           Quiz interactivo
         </NavLink>
+        )}
         <NavLink to="/acerca-de-nosotros" className="nav-item">
           Acerca de nosotros
         </NavLink>
       </nav>
-      <a href="/iniciar-sesion" className="button-login">
-        Iniciar Sesion
-      </a>
+      {userLooged ? (
+        <NavLink to="/perfil" className="button-login">
+          Perfil
+        </NavLink>
+      ) : (
+        <NavLink to="/iniciar-sesion" className="button-login">
+          Iniciar Sesión
+        </NavLink>
+      )}
     </header>
   ); 
 };
