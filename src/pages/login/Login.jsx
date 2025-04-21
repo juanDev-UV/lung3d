@@ -24,10 +24,6 @@ const Login = () => {
   
   };
 
-        <div className="logo">
-          <FontAwesomeIcon icon={faLungs} /> Respira3D.
-        </div>
-
   return (
     <div className="login-container">
       <div className="login-panel">

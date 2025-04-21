@@ -1,0 +1,21 @@
+
+.profile-content{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 92vh;
+    background-color: #f0f0f0;
+}
+
+
+.profile-content h2 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 10rem;
+}
+
+.profile-content p{
+    font-size: 2rem;
+}

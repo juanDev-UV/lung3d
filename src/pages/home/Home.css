@@ -43,8 +43,7 @@ section {
 
 .home {
     display: flex;
-    align-items: center;  /* Alinea verticalmente */
-    flex-wrap: wrap;       /* Permite envolver en pantallas pequeñas */
+    align-items: center;  /* Alinea verticalmente */ 
     gap: 1.5rem;
     padding-top: 10rem;
     padding-bottom: 3em;

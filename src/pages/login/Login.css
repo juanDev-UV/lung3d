@@ -55,6 +55,7 @@
     border: var(--border);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+    background-color: white;
     color: var(--green);
     cursor: pointer;
     font-size: 1.7rem;

@@ -1,0 +1,131 @@
+.bronquitis-container {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+  }
+  
+  .section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex: 1;
+  }
+  
+  .row-normal {
+    flex-direction: row;
+  }
+  
+  .row-reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .text-content {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .model {
+    padding-top: 5rem;
+    width: 1100px;
+    height: 80vh;
+  }
+
+  .model-health-pack {
+    padding-top: 10rem;
+    width: 900px;
+    height: 80vh;
+  }
+
+
+  
+  .title {
+    display: flex;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
+    border: 0.2rem solid var(--gray);
+    border-radius: 10rem;
+    box-shadow: 0.5rem 0.5rem 0 rgba(84, 84, 84, 0.412);
+    font-size: 6rem;
+  }
+  
+  .text {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.6;
+    padding-top: 5rem;
+  }
+  
+  .arrow {
+    text-align: center;
+    font-size: 5rem;
+    margin-top: 1rem;
+  }
+  
+  /* Sección 1 */
+  .section-intro {
+    display: flex;
+    align-items: left;
+    background-color: #ffffff;
+    color: #333;
+  }
+  .title-intro {
+    display: flex;
+    align-items: left;
+    color: white;
+    background-color: var(--green);
+  }
+  .arrow-intro {
+    color: #00b39f;
+  }
+  
+  /* Sección 2 */
+  .section-symptoms {
+    background-color: #00b39f;
+    color: white;
+  }
+  .title-symptoms {
+    background-color: white;
+    color: #333;
+  }
+  .arrow-symptoms {
+    color: white;
+  }
+  
+  /* Sección 3 */
+  .section-treatment {
+    background-color: #ffffff;
+    color: #333;
+  }
+  .title-treatment {
+    background-color: var(--green);
+    color: white;
+  }
+  .arrow-treatment {
+    color: #00b39f;
+  }
+  
+  /* Sección 4 */
+  .section-cases {
+    background-color: #00b39f;
+    color: white;
+  }
+  .title-cases {
+    color: #333;
+    background-color: white;
+  }
+
+
+  
