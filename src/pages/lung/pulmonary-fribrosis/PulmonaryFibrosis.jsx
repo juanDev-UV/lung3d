@@ -2,7 +2,10 @@ import "./PulmonaryFibrosis.css";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import RespiratorySystem from "./models-3d/RespiratorySystem";
-import Lights from "./lights/lights";
+import Bronchioles from "./models-3d/Bronchioles";
+import DirectionalLight from "./lights/DirectionalLight";
+import PointLight  from "./lights/PointLight";
+import { KeyboardControlsWrapper } from "./controls/KeyboadControls";
 
 const PulmonaryFibrosis = () => {
   return (
@@ -23,10 +26,57 @@ const PulmonaryFibrosis = () => {
             </p>
           </div>
           <div className="model model-respiratory-system">
-            <Canvas shadows camera={{ position: [0, 0, 5] }}>
+            <KeyboardControlsWrapper>
+              <Canvas shadows camera={{ position: [0, 0, 11] }}>
+                <OrbitControls />
+                <DirectionalLight />
+                <RespiratorySystem
+                  scale={11}
+                  position={[0, -1, 0]}
+                  castShadow
+                  receiveShadow
+                />
+                {/* Suelo para recibir la sombra */}
+                <mesh
+                  receiveShadow
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  position={[0, -2.2, 0]}
+                >
+                  <planeGeometry args={[20, 20]} />
+                  <shadowMaterial opacity={0.3} />
+                </mesh>
+              </Canvas>
+            </KeyboardControlsWrapper>
+          </div>
+        </div>
+        <div className="arrow arrow-intro">▼</div>
+      </section>
+      {/* Sección 2 */}
+      <section className="section section-symptoms">
+        <div className="section-content row-normal">
+          <div className="text-content">
+            <h3 className="title title-symptoms">Síntomas</h3>
+            <p className="text text-symptoms">
+              La fibrosis pulmonar se caracteriza principalmente por falta de
+              aire, tos seca, cansancio extremo y pérdida de peso involuntaria.
+              También puede manifestarse como dolor muscular o articular, y en
+              casos avanzados, acropaquia (ensanchamiento de las puntas de los
+              dedos). Síntomas más comunes: Falta de aire (disnea): Puede ser
+              inicialmente con el esfuerzo, pero progresa hasta la falta de aire
+              en reposo. Tos seca: Una tos persistente que no se acompaña de
+              flema. Cansancio extremo: A pesar de dormir lo suficiente, la
+              persona se siente exhausta y sin energía. Pérdida de peso
+              involuntaria: Una pérdida de peso sin explicación aparente. Dolor
+              muscular o articular: Dolores en los músculos y articulaciones que
+              pueden ser persistentes. Acropaquia: Ensanchamiento y redondeo de
+              las puntas de los dedos de las manos y los pies.
+            </p>
+          </div>
+          <div className="model model-brnchioles">
+            <Canvas shadows camera={{ position: [0, 0, 7] }}>
               <OrbitControls />
-              <Lights />
-              <RespiratorySystem
+              <PointLight />
+              <Bronchioles
                 scale={11}
                 position={[0, -1, 0]}
                 castShadow
@@ -36,7 +86,7 @@ const PulmonaryFibrosis = () => {
               <mesh
                 receiveShadow
                 rotation={[-Math.PI / 2, 0, 0]}
-                position={[0, -2.2, 0]}
+                position={[0, -4, 0]}
               >
                 <planeGeometry args={[20, 20]} />
                 <shadowMaterial opacity={0.3} />
@@ -44,9 +94,12 @@ const PulmonaryFibrosis = () => {
             </Canvas>
           </div>
         </div>
+        <div className="arrow arrow-intro">▼</div>
       </section>
+      ;
     </div>
   );
 };
 
 export default PulmonaryFibrosis;
+
