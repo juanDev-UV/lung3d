@@ -1,16 +1,22 @@
 /* eslint-disable react/no-unknown-property */
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, Text } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const LungRith = (props) => {
-
   const lungRightRef = useRef();
+  const [textColor, setTextColor] = useState("black");
+  const { nodes, materials } = useGLTF("/models-3d/lung-right.glb");
 
   useFrame((state, delta) => {
-    lungRightRef.current.rotation.y +=1 * delta;
-  })
-  const { nodes, materials } = useGLTF("/models-3d/lung-right.glb");
+    lungRightRef.current.rotation.y += 1 * delta;
+  });
+
+  const handlePointerEnter = () => {
+    const hue = Math.random() * 360;
+    setTextColor(`hsl(${hue}, 100%, 50%)`);
+  };
+
   return (
     <group {...props} dispose={null}>
       <group ref={lungRightRef} position={[-0.001, -0.1, -0.077]} >
@@ -69,6 +75,18 @@ const LungRith = (props) => {
           material={materials.TraqueaMaterial}
         />
 
+        {/* Texto interactivo encima del modelo */}
+        <Text
+          position={[-0.2, 0.17, 0]} // Ajustado para estar justo encima del modelo
+          fontSize={0.02}
+          fontStyle='poppins'
+          color={textColor}
+          anchorX="center"
+          anchorY="middle"
+          onPointerEnter={handlePointerEnter}
+        >
+          Pulmón Derecho
+        </Text>
       </group>
     </group>
   )
