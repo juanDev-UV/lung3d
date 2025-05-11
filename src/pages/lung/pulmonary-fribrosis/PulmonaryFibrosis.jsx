@@ -6,6 +6,7 @@ import Bronchioles from "./models-3d/Bronchioles";
 import DirectionalLight from "./lights/DirectionalLight";
 import PointLight  from "./lights/PointLight";
 import { KeyboardControlsWrapper } from "./controls/KeyboadControls";
+import Staging from "./staging/Staging"
 
 const PulmonaryFibrosis = () => {
   return (
@@ -27,11 +28,12 @@ const PulmonaryFibrosis = () => {
           </div>
           <div className="model model-respiratory-system">
             <KeyboardControlsWrapper>
-              <Canvas shadows camera={{ position: [0, 0, 11] }}>
+              <Canvas shadows camera={{ position: [0, 0.5, 3.5] }}>
                 <OrbitControls />
                 <DirectionalLight />
+                <Staging/>
                 <RespiratorySystem
-                  scale={11}
+                  scale={5}
                   position={[0, -1, 0]}
                   castShadow
                   receiveShadow
@@ -51,6 +53,7 @@ const PulmonaryFibrosis = () => {
         </div>
         <div className="arrow arrow-intro">▼</div>
       </section>
+
       {/* Sección 2 */}
       <section className="section section-symptoms">
         <div className="section-content row-normal">
