@@ -7,7 +7,11 @@ import LungRith from "./models-3d/LungRight";
 import HealthPack from "./models-3d/HealthPack";
 import LungTransparent from "./models-3d/LungTransparent";
 import LightsLungRight from "./lights/LightsLungRight";
+import Grass from "./models-3d/Grass";
 import Floor from "./models-3d/Floor";
+import LightsLungTransparent from "./lights/LightsLungTransparent";
+import TitleSymptoms from "./texts/TitleSymptoms";
+import StagingSymptoms from "./staging/StagingSymtoms";
 
 const Bronchitis = () => {
   return (
@@ -29,15 +33,16 @@ const Bronchitis = () => {
             </p>
           </div>
           <div className="model model-lung-right" >
-            <Canvas camera={{ position: [0, 0, 3] }} shadows={true}>
+            <Canvas className={"canvas canvas-lung-right"}camera={{ position: [0, 0, 3] }} shadows={true}>
               <OrbitControls />
               <LightsLungRight />
+              <StagingSymptoms/>
               <directionalLight
                 position={[5, 2, 10]}
                 intensity={2}
                 castShadow={true} />
               <LungRith scale={11} />
-              <Floor/>
+              <Grass/>
             </Canvas>
           </div>
         </div>
@@ -58,8 +63,11 @@ const Bronchitis = () => {
             </p>
           </div>
           <div className="model model-lung-transparent" >
-            <Canvas camera={{ position: [-0.5, 0, 2] }}>
+            <Canvas className={"canvas canvas-lung-right"} camera={{ position: [-0.5, 0, 2] }} shadows={true}>
               <OrbitControls />
+              <TitleSymptoms title={"Interactue"} />
+              <LightsLungTransparent/>
+              <StagingSymptoms/>
               <ambientLight
                 intensity={1.5} />
               <directionalLight
@@ -67,6 +75,7 @@ const Bronchitis = () => {
                 intensity={2} />
               <LungTransparent
                 scale={5} />
+              <Floor/>
             </Canvas>
           </div>
         </div>
