@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import "./Asthma.css";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sky, Html } from "@react-three/drei";
