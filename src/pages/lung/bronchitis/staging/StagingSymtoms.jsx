@@ -3,7 +3,6 @@ import { Backdrop, ContactShadows, Environment, Sky, Sparkles, Stage } from "@re
 
 const StagingSymptoms = () => {
     return (
-        <>
             <Environment
                 files={[
                     "px.png",
@@ -13,11 +12,10 @@ const StagingSymptoms = () => {
                     "pz.png",
                     "nz.png",
                 ]}
-                path='/public/staging/staging-bronchitis/scene-1/cubemaps/sky/'
+                path="/staging/staging-bronchitis/scene-1/cubemaps/sky/"
                 background
 
             />
-        </>
     );
 };
 
