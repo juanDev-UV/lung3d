@@ -12,7 +12,7 @@ const StagingSymptoms = () => {
                     "pz.png",
                     "nz.png",
                 ]}
-                path="/public/staging/staging-bronchitis/scene-1/cubemaps/sky/"
+                path="/staging/staging-bronchitis/scene-1/cubemaps/sky/"
                 background
 
             />
