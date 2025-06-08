@@ -4,10 +4,11 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import RespiratorySystem from "./models-3d/RespiratorySystem";
 import Bronchioles from "./models-3d/Bronchioles";
+import Medkit from "./models-3d/Medkit";
 import DirectionalLight from "./lights/DirectionalLight";
-import PointLight  from "./lights/PointLight";
+import PointLight from "./lights/PointLight";
 import { KeyboardControlsWrapper } from "./controls/KeyboadControls";
-import Staging from "./staging/Staging"
+import StagingIntro from "./staging/StagingIntro";
 
 const PulmonaryFibrosis = () => {
   return (
@@ -32,7 +33,7 @@ const PulmonaryFibrosis = () => {
               <Canvas shadows camera={{ position: [0, 0.5, 3.5] }}>
                 <OrbitControls />
                 <DirectionalLight />
-                <Staging/>
+                <StagingIntro />
                 <RespiratorySystem
                   scale={5}
                   position={[0, -1, 0]}
@@ -54,7 +55,6 @@ const PulmonaryFibrosis = () => {
         </div>
         <div className="arrow arrow-intro">▼</div>
       </section>
-
       {/* Sección 2 */}
       <section className="section section-symptoms">
         <div className="section-content row-normal">
@@ -77,10 +77,59 @@ const PulmonaryFibrosis = () => {
             </p>
           </div>
           <div className="model model-brnchioles">
+            <KeyboardControlsWrapper
+              map={[
+                { name: "moveUp", keys: ["w"] },
+                { name: "pause", keys: ["p"] },
+              ]}
+            >
+              <Canvas shadows camera={{ position: [0, 0, 7] }}>
+                <OrbitControls />
+                <PointLight />
+                <StagingIntro />
+                <Bronchioles
+                  scale={11}
+                  position={[0, -0.1, 0]}
+                  castShadow
+                  receiveShadow
+                />
+                {/* Suelo para recibir la sombra */}
+                <mesh
+                  receiveShadow
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  position={[0, -4, 0]}
+                >
+                  <planeGeometry args={[20, 20]} />
+                  <shadowMaterial opacity={0.3} />
+                </mesh>
+              </Canvas>
+            </KeyboardControlsWrapper>
+          </div>
+        </div>
+        <div className="arrow arrow-intro">▼</div>
+      </section>
+      {/* Sección 3 */}
+      <section className="section section-treatment">
+        <div className="section-content row-reverse">
+          <div className="text-content">
+            <h3 className="title title-treatment">Tratamiento</h3>
+            <p className="text text-treatment">
+              No existe cura conocida para la FPI. El tratamiento se enfoca en
+              aliviar los síntomas y disminuir el avance de la enfermedad:
+              Pirfenidona (Esbriet) y nintedanib (Ofev) son dos medicamentos que
+              han sido utilizados para tratar a las personas con FPI. Pueden
+              ayudar a hacer que el daño al pulmón sea más lento. Las personas
+              con niveles bajos de oxígeno en la sangre necesitarán apoyo con
+              oxígeno en casa. La rehabilitación pulmonar no curará la
+              enfermedad, pero puede ayudar a las personas a hacer ejercicio con
+              una menor dificultad respiratoria.
+            </p>
+          </div>
+          <div className="model model-medkit">
             <Canvas shadows camera={{ position: [0, 0, 7] }}>
               <OrbitControls />
               <PointLight />
-              <Bronchioles
+              <Medkit
                 scale={11}
                 position={[0, -1, 0]}
                 castShadow
@@ -98,7 +147,7 @@ const PulmonaryFibrosis = () => {
             </Canvas>
           </div>
         </div>
-        <div className="arrow arrow-intro">▼</div>
+        <div className="arrow arrow-treatment">▼</div>
       </section>
       ;
     </div>
@@ -106,4 +155,3 @@ const PulmonaryFibrosis = () => {
 };
 
 export default PulmonaryFibrosis;
-

@@ -104,3 +104,16 @@
   .arrow-symptoms {
     color: white;
   }
+
+  /* Sección 3 */
+  .section-treatment {
+    background-color: #ffffff;
+    color: #333;
+  }
+  .title-treatment {
+    background-color: var(--green);
+    color: white;
+  }
+  .arrow-treatment {
+    color: #00b39f;
+  }
