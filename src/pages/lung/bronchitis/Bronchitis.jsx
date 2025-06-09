@@ -10,10 +10,15 @@ import LightsLungRight from "./lights/LightsLungRight";
 import Grass from "./models-3d/Grass";
 import Floor from "./models-3d/Floor";
 import LightsLungTransparent from "./lights/LightsLungTransparent";
-import TitleSymptoms from "./texts/TitleSymptoms";
 import StagingSymptoms from "./staging/StagingSymtoms";
+import { useLocation } from "react-router";
+import LightsNurse from "./lights/LightsNurse";
+
 
 const Bronchitis = () => {
+  const location = useLocation();
+
+
   return (
     <div className="bronquitis-container">
       {/* Sección 1 */}
@@ -31,23 +36,21 @@ const Bronchitis = () => {
               bronquiales.
             </p>
           </div>
-          <div className="model model-lung-right">
-            <Canvas
-              className={"canvas canvas-lung-right"}
+          <div className="model model-lung-right" >
+            <Canvas className={"canvas canvas-lung-right"}
               camera={{ position: [0, 0, 3] }}
               shadows={true}
-            >
+              key={location.pathname}>
               <OrbitControls />
               <LightsLungRight />
-
-              <StagingSymptoms />
-
+              <StagingSymptoms key={location.pathname}/>
               <directionalLight
                 position={[5, 2, 10]}
                 intensity={2}
                 castShadow={true}
               />
               <LungRith scale={11} />
+              <Grass />
               <Grass />
             </Canvas>
           </div>
@@ -67,19 +70,19 @@ const Bronchitis = () => {
               de esputo para descartar infecciones bacterianas.
             </p>
           </div>
-          <div className="model model-lung-transparent">
-            <Canvas
-              className={"canvas canvas-lung-right"}
-              camera={{ position: [-0.5, 0, 2] }}
-              shadows={true}
-            >
+          <div className="model model-lung-transparent" >
+            <Canvas className={"canvas canvas-lung-right"} 
+            camera={{ position: [-0.5, 0, 2] }} 
+            shadows={true}
+            key={location.pathname}>
               <OrbitControls />
-              <TitleSymptoms title={"Interactue"} />
               <LightsLungTransparent />
-              <StagingSymptoms />
-              <ambientLight intensity={1.5} />
-              <directionalLight position={[5, 2, 10]} intensity={2} />
-              <LungTransparent scale={5} />
+              <StagingSymptoms key={location.pathname}/>
+              <directionalLight
+                position={[5, 2, 10]}
+                intensity={2} />
+              <LungTransparent
+                scale={5} />
               <Floor />
             </Canvas>
           </div>
@@ -100,12 +103,17 @@ const Bronchitis = () => {
               contaminantes y vacunarse contra la gripe.
             </p>
           </div>
-          <div className="model model-nurse">
-            <Canvas camera={{ position: [0, 0, 3] }}>
+          <div className="model model-nurse" >
+            <Canvas className="canvas canvas-nurse"
+            camera={{ position: [0, 0, 3] }}
+            shadows={true}
+            key={location.pathname}>
               <OrbitControls />
-              <ambientLight intensity={1.5} />
+              <LightsNurse />
               <directionalLight position={[5, 2, 10]} intensity={2} />
+              <StagingSymptoms key={location.pathname}/>
               <Nurse scale={5} />
+              <Grass/>
             </Canvas>
           </div>
         </div>
@@ -125,8 +133,11 @@ const Bronchitis = () => {
               efectivos en infecciones bacterianas, no en las virales.
             </p>
           </div>
-          <div className="model model-health-pack">
-            <Canvas camera={{ position: [3, 0, 5] }}>
+          <div className="model model-health-pack" >
+            <Canvas className="canvas canvas-health-pack"
+            camera={{ position: [3, 0, 5] }}
+            shadow={true}
+            key={location.pathname}>
               <OrbitControls />
               <ambientLight intensity={1.5} />
               <directionalLight position={[5, 2, 10]} intensity={2} />
