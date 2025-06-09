@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unknown-property */
-import { useGLTF, Html, Text } from '@react-three/drei';
+import { useGLTF, Html, Text, Text3D } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useEffect, useRef, useState } from 'react';
 
@@ -109,7 +109,7 @@ const LungRith = (props) => {
         >
           - Bronquios
         </Text>
-                <Text
+        <Text
           position={[0.07, 0.23, 0]}
           fontSize={0.015}
           fontStyle='poppins'
@@ -121,34 +121,36 @@ const LungRith = (props) => {
           - Traquea
         </Text>
       </group>
-
-      {/* Texto interactivo */}
-      <Text
-        position={[-0.2, 0.14, 0]}
-        fontSize={0.02}
-        fontStyle='poppins'
-        fontWeight={600}
-        color={textColor}
-        anchorX="center"
-        anchorY="middle"
-        onPointerEnter={handlePointerEnter}
-      >
-        Sus partes
-      </Text>
+      <group onPointerEnter={handlePointerEnter}>
+        <Text3D
+          position={[-0.4, 0.15, -0.1]}
+          font="/fonts/helvetiker_regular.typeface.json"
+          size={0.04}
+          height={0.02}
+          curveSegments={12}
+          bevelEnabled
+          bevelThickness={0.007}
+          bevelSize={0.002}
+          bevelSegments={2}
+        >
+          Sus partes
+          <meshStandardMaterial color={textColor} />
+        </Text3D>
+      </group>
 
       {/* Botón HTML */}
       <Html position={[0.3, 0, 0]} center>
         <button
           onClick={() => setIsRotating((prev) => !prev)}
           style={{
-              padding: '8px 16px',
-              backgroundColor: '#00b39f',
-              color: 'white',
-              border: '5px',
-              borderRadius: '10px',
-              cursor: 'pointer',
-              fontWeight: "bold",
-              fontSize: '12px'
+            padding: '8px 16px',
+            backgroundColor: '#00b39f',
+            color: 'white',
+            border: '5px',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            fontWeight: "bold",
+            fontSize: '12px'
           }}
         >
           {isRotating ? "Pausar rotación" : "Reanudar rotación"}
