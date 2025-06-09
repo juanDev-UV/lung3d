@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { Backdrop, ContactShadows, Environment, Sky, Sparkles, Stage } from "@react-three/drei";
 
-const StagingSymptoms = () => {
+const StagingNurse = () => {
     return (
             <Environment
                 files={[
@@ -19,4 +19,4 @@ const StagingSymptoms = () => {
     );
 };
 
-export default StagingSymptoms;
+export default StagingNurse;

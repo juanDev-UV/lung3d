@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem;
     box-sizing: border-box;
   }
   
@@ -19,7 +19,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
     flex: 1;
   }
   
@@ -77,6 +76,7 @@
     text-align: center;
     font-size: 5rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   
   /* Sección 1 */
