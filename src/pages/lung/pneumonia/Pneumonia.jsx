@@ -1,14 +1,31 @@
 import "./Pneumonia.css";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls, Html, Sky } from "@react-three/drei";
-import { useRef, useEffect, useState } from "react";
-import PneumoniaModel from "./models-3d/LungLungPneumonia";
+import { Canvas, useFrame } from "@react-three/fiber";
+import {
+  OrbitControls,
+  Html,
+  Sky,
+  Text,
+  KeyboardControls,
+  useKeyboardControls,
+} from "@react-three/drei";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+
 import PnumoniaModel1 from "./models-3d/LungPneumonia";
+import PneumoniaModel from "./models-3d/LungLungPneumonia";
+import PnumoniaModel2 from "./models-3d/LungLungLungPneumonia";
+
 import Lights from "./lights/Lights";
 import Floor from "./models-3d/Floor";
+import StagingNightPneumonia from "./staging/stagingNightPneumonia";
+import StagingNight2Pneumonia from "./staging/stagingNight2Pneumonia";
 
-// Modelo con rotación automática
-const RotatingModel = ({ scale, position, ModelComponent }) => {
+const textFadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
+
+const RotatingModel = ({ scale, position = [0, 0, 0], ModelComponent }) => {
   const groupRef = useRef();
   useFrame(() => {
     if (groupRef.current) {
@@ -23,74 +40,50 @@ const RotatingModel = ({ scale, position, ModelComponent }) => {
   );
 };
 
-// Modelo interactivo con eventos y HTML 3D
 const InteractiveModel = () => {
   const groupRef = useRef();
-  const [color, setColor] = useState("#ffffff");
   const [isRotating, setIsRotating] = useState(false);
-  const [initialPosition] = useState([0, 0, 0]); // Posición inicial
-  const [rotation, setRotation] = useState([0, 0, 0]); // Rotación inicial
+  const initialPosition = [0, 0, 0];
 
-  // Raycaster de react-three
-  const { camera, raycaster } = useThree();
+  const [_, getKeys] = useKeyboardControls();
 
-  // Rotación automática
   useFrame(() => {
-    if (!isRotating && groupRef.current) {
-      groupRef.current.rotation.y += 0.005; // Rotación constante
+    const keys = getKeys();
+
+    if (keys.rotate) {
+      if (groupRef.current) {
+        groupRef.current.rotation.y += 0.03;
+      }
+      if (!isRotating) setIsRotating(true);
+    } else {
+      if (isRotating) setIsRotating(false);
+      if (groupRef.current) {
+        groupRef.current.rotation.y += 0.005;
+      }
     }
   });
 
-  // Teclado: presiona "r" para girar el modelo
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "r" && groupRef.current) {
-        groupRef.current.rotation.y += 0.5;
-        setIsRotating(true);
-        setTimeout(() => setIsRotating(false), 500); // Duración de la animación
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Mouse: cambiar color del modelo al hacer clic
-  const handleClick = (e) => {
-    e.stopPropagation(); // Evita que el clic se propague a otros elementos
-    setColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
-  };
-
-  // Función para reiniciar la posición y la rotación
   const handleReset = () => {
     if (groupRef.current) {
-      groupRef.current.position.set(...initialPosition); // Reiniciar la posición
-      setRotation([0, 0, 0]); // Restablecer la rotación
-      groupRef.current.rotation.set(...[0, 0, 0]); // Asegurarse que la rotación sea 0 en los tres ejes
+      groupRef.current.position.set(...initialPosition);
+      groupRef.current.rotation.set(0, 0, 0);
     }
   };
 
   return (
-    <group ref={groupRef} onClick={handleClick} position={initialPosition}>
-      <PnumoniaModel1 scale={15} color={color} />
-      
-      {/* HTML en 3D */}
+    <group ref={groupRef} position={initialPosition}>
+      <PnumoniaModel1 scale={15} />
       <Html position={[0, -2, 0]}>
         <button
-          onClick={handleReset} // Llama a la función de reinicio
+          onClick={handleReset}
           style={{
-            position: "absolute", // Establece la posición estática en relación con la pantalla
-            top: "10px", // Distancia desde la parte superior de la ventana
-            left: "90%", // Centra el botón horizontalmente
-            transform: "translateX(-50%)", // Ajuste para centrar el botón exactamente
             padding: "10px 15px",
             borderRadius: "8px",
-            backgroundColor: "#28a745", // Verde para indicar "Reiniciar"
+            backgroundColor: "#28a745",
             color: "white",
             border: "none",
             fontSize: "1rem",
             cursor: "pointer",
-            zIndex: 10, // Asegura que el botón esté por encima de los modelos 3D
             width: "150px",
             height: "50px",
           }}
@@ -98,16 +91,10 @@ const InteractiveModel = () => {
           Reiniciar
         </button>
       </Html>
-
-      {/* Indicador de rotación */}
       {isRotating && (
         <Html position={[0, 0, 0]} style={{ zIndex: 20 }}>
           <div
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
               background: "rgba(0, 0, 0, 0.7)",
               padding: "10px 20px",
               borderRadius: "8px",
@@ -124,28 +111,69 @@ const InteractiveModel = () => {
   );
 };
 
+// --- NUEVO COMPONENTE: Texto 3D que se sacude ---
+const ShakingText = (props) => {
+  const textRef = useRef();
+  const shakeIntensity = 0.03;
+  const [hovered, setHovered] = useState(false);
+
+  useFrame(() => {
+    if (textRef.current) {
+      if (hovered) {
+        const time = performance.now() * 0.005;
+        textRef.current.position.x = Math.sin(time * 4) * shakeIntensity;
+        textRef.current.position.y = props.position[1] + Math.cos(time * 3) * shakeIntensity;
+        textRef.current.position.z = props.position[2];
+      } else {
+        textRef.current.position.x = props.position[0];
+        textRef.current.position.y = props.position[1];
+        textRef.current.position.z = props.position[2];
+      }
+    }
+  });
+
+  return (
+    <Text
+      ref={textRef}
+      fontSize={props.fontSize || 0.5}
+      color={props.color || "white"}
+      anchorX="center"
+      anchorY="middle"
+      {...props}
+      onPointerOver={() => setHovered(true)}
+      onPointerOut={() => setHovered(false)}
+    >
+      {props.children}
+    </Text>
+  );
+};
+
 const Pneumonia = () => {
   return (
     <div className="pneumonia-container">
-      {/* Sección 1: Introducción */}
       <section className="section section-intro">
         <div className="section-content row-reverse">
-          <div className="text-content">
+          <motion.div
+            className="text-content"
+            variants={textFadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             <h2 className="title title-intro">Neumonía</h2>
             <p className="text text-intro">
-              La neumonía es una infección pulmonar que causa inflamación en los
-              sacos de aire, llenándolos de líquido o pus. Afecta la respiración,
-              produce fiebre, tos y fatiga, y puede ser potencialmente grave sin el
-              tratamiento adecuado. Es causada por bacterias, virus o incluso
-              hongos, y afecta especialmente a personas con sistemas inmunitarios
-              debilitados.
+              La neumonía es una infección pulmonar que causa inflamación en los sacos
+              de aire, llenándolos de líquido o pus. Afecta la respiración, produce
+              fiebre, tos y fatiga, y puede ser potencialmente grave sin el tratamiento
+              adecuado. Es causada por bacterias, virus o incluso hongos, y afecta
+              especialmente a personas con sistemas inmunitarios debilitados.
             </p>
-          </div>
+          </motion.div>
           <div className="model model-pneumonia">
-            <Canvas camera={{ position: [0, 0, 3.5] }} shadows={true}>
+            <Canvas camera={{ position: [0, 0, 3.5] }} shadows>
               <OrbitControls />
-              <Sky sunPosition={[100, 20, 100]} />
               <Lights type="A" />
+              <StagingNight2Pneumonia />
               <RotatingModel scale={15} ModelComponent={PneumoniaModel} />
               <Floor />
               <mesh
@@ -162,36 +190,101 @@ const Pneumonia = () => {
         <div className="arrow arrow-intro">▼</div>
       </section>
 
-      {/* Sección 2: Síntomas */}
       <section className="section section-symptoms">
         <div className="section-content row-normal">
-          <div className="text-content">
+          <motion.div
+            className="text-content"
+            variants={textFadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             <h3 className="title title-symptoms">Síntomas</h3>
             <p className="text text-symptoms">
               La neumonía presenta síntomas como fiebre alta, escalofríos, tos con
               flema, dificultad para respirar y dolor en el pecho al respirar o toser.
               Otros signos pueden incluir sudoración excesiva, fatiga, pérdida de
               apetito y confusión (especialmente en adultos mayores).
-              <br /><br />
-              <strong>Síntomas comunes:</strong><br />
-              • Fiebre y escalofríos<br />
-              • Tos con flema<br />
-              • Dificultad para respirar<br />
-              • Dolor en el pecho<br />
-              • Fatiga y debilidad<br />
-              • Confusión mental
+              <br />
+              <br />
+              <strong>Síntomas comunes:</strong>
+              <br />• Fiebre y escalofríos
+              <br />• Tos con flema
+              <br />• Dificultad para respirar
+              <br />• Dolor en el pecho
+              <br />• Fatiga y debilidad
+              <br />• Confusión mental
             </p>
-          </div>
+          </motion.div>
           <div className="model model-pneumonia-symptoms">
-            <Canvas camera={{ position: [1, 0, 3] }} shadows={true}>
+            <KeyboardControls map={[{ name: "rotate", keys: ["r"] }]}>
+              <Canvas camera={{ position: [1, 0, 3] }} shadows>
+                <OrbitControls />
+                <Sky sunPosition={[100, 20, 100]} />
+                <Lights type="B" />
+                <InteractiveModel />
+                <mesh
+                  receiveShadow
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  position={[0, -3, 0]}
+                >
+                  <planeGeometry args={[20, 20]} />
+                  <shadowMaterial opacity={0.3} />
+                </mesh>
+              </Canvas>
+            </KeyboardControls>
+          </div>
+        </div>
+        <div className="arrow arrow-symptoms">▼</div>
+      </section>
+
+      <section className="section section-treatment">
+        <div className="section-content row-reverse">
+          <motion.div
+            className="text-content"
+            variants={textFadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <h3 className="title title-treatment">Tratamientos</h3>
+            <p className="text text-treatment">
+              El tratamiento de la neumonía depende de la causa y la gravedad del caso.
+              <br />
+              <br />
+              <strong>Tratamientos médicos convencionales:</strong>
+              <br />• Antibióticos (en casos bacterianos)
+              <br />• Antivirales o antimicóticos según el origen
+              <br />• Oxigenoterapia para facilitar la respiración
+              <br />• Hospitalización en casos graves
+              <br />• Analgésicos y antipiréticos para el malestar
+              <br />
+              <br />
+              <strong>Tratamientos alternativos y complementarios:</strong>
+              <br />• Reposo y buena hidratación
+              <br />• Inhalaciones de vapor con eucalipto o menta
+              <br />• Infusiones de jengibre, miel y limón
+              <br />• Alimentos ricos en vitamina C para fortalecer defensas
+              <br />• Técnicas de respiración consciente para aliviar la fatiga
+            </p>
+          </motion.div>
+          <div className="model model-treatment">
+            <Canvas camera={{ position: [1, 0, 4.5] }} shadows>
+              <color attach="background" args={["#0a0a1f"]} />
+              <fog attach="fog" args={["#0a0a1f", 10, 30]} />
               <OrbitControls />
-              <Sky sunPosition={[100, 20, 100]} />
-              <Lights type="B" />
-              <InteractiveModel />
+              <Lights type="C" />
+              <StagingNightPneumonia />
+              <RotatingModel scale={20} ModelComponent={PnumoniaModel2} />
+              <Floor />
+              {/* Aquí reemplazamos el texto fijo por el texto que se sacude */}
+              <ShakingText position={[0, 3, 0]} fontSize={0.5} color="white">
+                Tratamientos para la Neumonía
+              </ShakingText>
               <mesh
                 receiveShadow
                 rotation={[-Math.PI / 2, 0, 0]}
-                position={[0, -3, 0]}
+                position={[0, -2, 0]}
               >
                 <planeGeometry args={[20, 20]} />
                 <shadowMaterial opacity={0.3} />
@@ -199,7 +292,6 @@ const Pneumonia = () => {
             </Canvas>
           </div>
         </div>
-        <div className="arrow arrow-symptoms">▼</div>
       </section>
     </div>
   );

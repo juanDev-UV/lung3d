@@ -169,8 +169,11 @@ const Asthma = () => {
           <div className="text-content">
             <h3 className="title title-symptoms">Síntomas</h3>
             <p className="text text-symptoms">
-              El asma se manifiesta por la inflamación y estrechamiento de las vías respiratorias, lo que provoca episodios recurrentes de dificultad respiratoria.
-              Los síntomas pueden variar en intensidad y frecuencia, y a menudo empeoran por la noche o durante la actividad física.
+              El asma se manifiesta por la inflamación y estrechamiento de las
+              vías respiratorias, lo que provoca episodios recurrentes de
+              dificultad respiratoria. Los síntomas pueden variar en intensidad
+              y frecuencia, y a menudo empeoran por la noche o durante la
+              actividad física.
               <br />
               <br />
               <strong>Síntomas comunes:</strong>
@@ -182,11 +185,13 @@ const Asthma = () => {
               • Silbidos al respirar (sibilancias)
               <br />
               • Opresión en el pecho
-              <br />
-              • Fatiga durante el ejercicio
+              <br />• Fatiga durante el ejercicio
             </p>
           </div>
-          <div className="model model-symptoms" style={{ position: "relative" }}>
+          <div
+            className="model model-symptoms"
+            style={{ position: "relative" }}
+          >
             <Canvas shadows camera={{ position: [0, 1.5, 10], fov: 45 }}>
               <OrbitControls />
               <Floor />
@@ -231,4 +236,3 @@ const Asthma = () => {
 };
 
 export default Asthma;
-
