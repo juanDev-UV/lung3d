@@ -1,5 +1,6 @@
 // Asthma.jsx
-
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
 import "./Asthma.css";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sky, Html, Text } from "@react-three/drei";
@@ -222,8 +223,11 @@ const Asthma = () => {
           <div className="text-content">
             <h3 className="title title-symptoms">Síntomas</h3>
             <p className="text text-symptoms">
-              El asma se manifiesta por la inflamación y estrechamiento de las vías respiratorias, lo que provoca episodios recurrentes de dificultad respiratoria.
-              Los síntomas pueden variar en intensidad y frecuencia, y a menudo empeoran por la noche o durante la actividad física.
+              El asma se manifiesta por la inflamación y estrechamiento de las
+              vías respiratorias, lo que provoca episodios recurrentes de
+              dificultad respiratoria. Los síntomas pueden variar en intensidad
+              y frecuencia, y a menudo empeoran por la noche o durante la
+              actividad física.
               <br />
               <br />
               <strong>Síntomas comunes:</strong>
@@ -235,8 +239,7 @@ const Asthma = () => {
               • Silbidos al respirar (sibilancias)
               <br />
               • Opresión en el pecho
-              <br />
-              • Fatiga durante el ejercicio
+              <br />• Fatiga durante el ejercicio
             </p>
           </div>
 
