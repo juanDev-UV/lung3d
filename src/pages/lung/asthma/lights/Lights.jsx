@@ -6,17 +6,15 @@ import { DirectionalLightHelper } from "three";
 const Lights = ({ type = "A", showHelper = false }) => {
   const directionalLightRef = useRef();
 
-  // Mostrar helper solo si está activado
   if (showHelper) {
     useHelper(directionalLightRef, DirectionalLightHelper, 1, "red");
   }
 
-  // Configuraciones para tipo A y tipo B
   const lightConfigs = {
     A: {
       position: [6, 8.5, 7],
       intensity: 2.5,
-      shadowMapSize: { width: 4096, height: 4096 }, // Aumentado para sombras más nítidas
+      shadowMapSize: { width: 4096, height: 4096 },
       camera: {
         left: -10,
         right: 10,
@@ -39,13 +37,31 @@ const Lights = ({ type = "A", showHelper = false }) => {
         far: 40,
       },
     },
+    C: {
+      position: [2, 4, 6], // Fuente lateral baja
+      intensity: 0.8, // Luz tenue para noche
+      shadowMapSize: { width: 1024, height: 1024 },
+      camera: {
+        left: -5,
+        right: 5,
+        top: 5,
+        bottom: -5,
+        near: 0.5,
+        far: 30,
+      },
+    },
   };
 
   const config = lightConfigs[type] || lightConfigs["A"];
 
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.2} /> {/* Luz ambiental tenue */}
+      <hemisphereLight
+        skyColor={"#445566"}
+        groundColor={"#222222"}
+        intensity={0.3}
+      />
       <directionalLight
         ref={directionalLightRef}
         position={config.position}
