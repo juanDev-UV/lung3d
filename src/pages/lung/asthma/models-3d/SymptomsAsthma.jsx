@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 const LungSymptomsAsthmaModel = (props) => {
-  const { nodes, materials } = useGLTF('/models-3d/symptoms-asthma.glb');
+  const { nodes, materials } = useGLTF("/models-3d/symptoms-asthma.glb");
   return (
     <group {...props} dispose={null}>
       <mesh

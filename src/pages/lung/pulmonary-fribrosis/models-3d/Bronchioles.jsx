@@ -1,10 +1,17 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useGLTF, Html, Text3D, useKeyboardControls } from "@react-three/drei";
+import {
+  useGLTF,
+  Html,
+  Text3D,
+  useKeyboardControls,
+  PositionalAudio,
+} from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 const BronchiolesModel = (props) => {
   const { nodes, materials } = useGLTF("/models-3d/bronchioles.glb");
   const modelRef = useRef();
+  const soundRef = useRef();
 
   const [isRotating, setIsRotating] = useState(true);
   const [textColor, setTextColor] = useState("#ffffff");
@@ -17,18 +24,14 @@ const BronchiolesModel = (props) => {
     const unsubMove = subscribeKeys(
       (state) => state.moveUp,
       (pressed) => {
-        if (pressed) {
-          setPositionY((prev) => prev + 0.1);
-        }
+        if (pressed) setPositionY((prev) => prev + 0.1);
       }
     );
 
     const unsubPause = subscribeKeys(
       (state) => state.pause,
       (pressed) => {
-        if (pressed) {
-          setIsRotating((prev) => !prev);
-        }
+        if (pressed) setIsRotating((prev) => !prev);
       }
     );
 
@@ -38,14 +41,14 @@ const BronchiolesModel = (props) => {
     };
   }, [subscribeKeys]);
 
-  // Animación de rotación
+  // Rotación animada
   useFrame(() => {
     if (modelRef.current && isRotating) {
       modelRef.current.rotation.y += 0.01;
     }
   });
 
-  // Cambiar color aleatorio al pasar el mouse por el texto
+  // Color aleatorio en texto al pasar el mouse
   const handlePointerEnter = () => {
     const hue = Math.random() * 360;
     setTextColor(`hsl(${hue}, 100%, 50%)`);
@@ -54,7 +57,7 @@ const BronchiolesModel = (props) => {
   return (
     <group {...props} dispose={null}>
       <group ref={modelRef} position={[0, positionY, 0]}>
-        {/* Meshes del modelo */}
+        {/* Mallas del modelo */}
         {Object.values(nodes).map((mesh, i) =>
           mesh.geometry ? (
             <mesh
@@ -68,27 +71,30 @@ const BronchiolesModel = (props) => {
         )}
       </group>
 
-      {/* Texto 3D interactivo */}
+      {/* Texto 3D */}
       <Text3D
-        font="/fonts/Alice_Regular.json"
+        font="/fonts/Roboto_Regular.json"
         size={0.1}
-        height={0.1}
+        height={0.05}
         curveSegments={12}
-        bevelEnabled
         bevelThickness={0.03}
         bevelSize={0.02}
         bevelSegments={5}
-        position={[-0.3, 0.3, 0]}
+        position={[-0.82, 0.3, 0]}
         onPointerEnter={handlePointerEnter}
+        bevelEnabled={false}
       >
-        Bronquiolos
+        Síntomas Representativos
         <meshStandardMaterial color={textColor} />
       </Text3D>
 
-      {/* Botón HTML 3D */}
+      {/* Botón HTML con sonido */}
       <Html position={[0, -0.4, 0]} center>
         <button
-          onClick={() => setIsRotating((prev) => !prev)}
+          onClick={() => {
+            setIsRotating((prev) => !prev);
+            soundRef.current?.play(); // 🔊 Reproducir sonido
+          }}
           style={{
             padding: "8px 16px",
             backgroundColor: "#00b39f",
@@ -102,6 +108,14 @@ const BronchiolesModel = (props) => {
           {isRotating ? "Pausar rotación" : "Reanudar rotación"}
         </button>
       </Html>
+
+      {/* Sonido posicional */}
+      <PositionalAudio
+        ref={soundRef}
+        url="../sounds/click.mp3"
+        distance={5}
+        loop={false}
+      />
     </group>
   );
 };

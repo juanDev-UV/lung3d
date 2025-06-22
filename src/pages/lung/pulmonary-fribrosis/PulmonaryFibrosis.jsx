@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import "./PulmonaryFibrosis.css";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -9,6 +8,7 @@ import DirectionalLight from "./lights/DirectionalLight";
 import PointLight from "./lights/PointLight";
 import { KeyboardControlsWrapper } from "./controls/KeyboadControls";
 import StagingIntro from "./staging/StagingIntro";
+import CompleteSystem from "./models-3d/CompleteRespiratorySystem";
 
 const PulmonaryFibrosis = () => {
   return (
@@ -40,7 +40,6 @@ const PulmonaryFibrosis = () => {
                   castShadow
                   receiveShadow
                 />
-                {/* Suelo para recibir la sombra */}
                 <mesh
                   receiveShadow
                   rotation={[-Math.PI / 2, 0, 0]}
@@ -55,6 +54,7 @@ const PulmonaryFibrosis = () => {
         </div>
         <div className="arrow arrow-intro">▼</div>
       </section>
+
       {/* Sección 2 */}
       <section className="section section-symptoms">
         <div className="section-content row-normal">
@@ -67,23 +67,18 @@ const PulmonaryFibrosis = () => {
               casos avanzados, acropaquia (ensanchamiento de las puntas de los
               dedos). Síntomas más comunes: Falta de aire (disnea): Puede ser
               inicialmente con el esfuerzo, pero progresa hasta la falta de aire
-              en reposo. Tos seca: Una tos persistente que no se acompaña de
-              flema. Cansancio extremo: A pesar de dormir lo suficiente, la
-              persona se siente exhausta y sin energía. Pérdida de peso
-              involuntaria: Una pérdida de peso sin explicación aparente. Dolor
-              muscular o articular: Dolores en los músculos y articulaciones que
-              pueden ser persistentes. Acropaquia: Ensanchamiento y redondeo de
-              las puntas de los dedos de las manos y los pies.
+              en reposo. Tos seca persistente. Cansancio extremo. Pérdida de
+              peso involuntaria. Dolor muscular o articular. Acropaquia.
             </p>
           </div>
-          <div className="model model-brnchioles">
+          <div className="model model-bronchioles">
             <KeyboardControlsWrapper
               map={[
                 { name: "moveUp", keys: ["w"] },
                 { name: "pause", keys: ["p"] },
               ]}
             >
-              <Canvas shadows camera={{ position: [0, 0, 7] }}>
+              <Canvas shadows camera={{ position: [0, 0, 9] }}>
                 <OrbitControls />
                 <PointLight />
                 <StagingIntro />
@@ -93,7 +88,6 @@ const PulmonaryFibrosis = () => {
                   castShadow
                   receiveShadow
                 />
-                {/* Suelo para recibir la sombra */}
                 <mesh
                   receiveShadow
                   rotation={[-Math.PI / 2, 0, 0]}
@@ -108,6 +102,7 @@ const PulmonaryFibrosis = () => {
         </div>
         <div className="arrow arrow-intro">▼</div>
       </section>
+
       {/* Sección 3 */}
       <section className="section section-treatment">
         <div className="section-content row-reverse">
@@ -115,41 +110,112 @@ const PulmonaryFibrosis = () => {
             <h3 className="title title-treatment">Tratamiento</h3>
             <p className="text text-treatment">
               No existe cura conocida para la FPI. El tratamiento se enfoca en
-              aliviar los síntomas y disminuir el avance de la enfermedad:
-              Pirfenidona (Esbriet) y nintedanib (Ofev) son dos medicamentos que
-              han sido utilizados para tratar a las personas con FPI. Pueden
-              ayudar a hacer que el daño al pulmón sea más lento. Las personas
-              con niveles bajos de oxígeno en la sangre necesitarán apoyo con
-              oxígeno en casa. La rehabilitación pulmonar no curará la
-              enfermedad, pero puede ayudar a las personas a hacer ejercicio con
-              una menor dificultad respiratoria.
+              aliviar los síntomas y disminuir el avance de la enfermedad.
+              Medicamentos como Pirfenidona y Nintedanib pueden ayudar a frenar
+              el deterioro pulmonar. El oxígeno suplementario y la
+              rehabilitación pulmonar también son comunes.
             </p>
           </div>
           <div className="model model-medkit">
-            <Canvas shadows camera={{ position: [0, 0, 7] }}>
-              <OrbitControls />
-              <PointLight />
-              <Medkit
-                scale={11}
-                position={[0, -1, 0]}
-                castShadow
-                receiveShadow
-              />
-              {/* Suelo para recibir la sombra */}
-              <mesh
-                receiveShadow
-                rotation={[-Math.PI / 2, 0, 0]}
-                position={[0, -4, 0]}
-              >
-                <planeGeometry args={[20, 20]} />
-                <shadowMaterial opacity={0.3} />
-              </mesh>
-            </Canvas>
+            <KeyboardControlsWrapper>
+              <Canvas shadows camera={{ position: [0, 0, 8] }}>
+                <OrbitControls />
+                <directionalLight
+                  castShadow
+                  position={[3, 10, 5]}
+                  intensity={1.8}
+                  shadow-mapSize-width={2048}
+                  shadow-mapSize-height={2048}
+                  shadow-camera-near={1}
+                  shadow-camera-far={20}
+                  shadow-camera-left={-10}
+                  shadow-camera-right={10}
+                  shadow-camera-top={10}
+                  shadow-camera-bottom={-10}
+                />
+                <StagingIntro />
+                <Medkit
+                  scale={11}
+                  position={[0, -1, 0]}
+                  castShadow
+                  receiveShadow
+                />
+                <mesh
+                  receiveShadow
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  position={[0, -5, 0]}
+                >
+                  <planeGeometry args={[20, 20]} />
+                  <shadowMaterial opacity={0.3} />
+                </mesh>
+              </Canvas>
+            </KeyboardControlsWrapper>
           </div>
         </div>
         <div className="arrow arrow-treatment">▼</div>
       </section>
-      ;
+
+      {/* Sección 4 */}
+      <section className="section section-cases">
+        <div className="section-content row-normal">
+          <div className="text-content">
+            <h3 className="title title-cases">Casos</h3>
+            <p className="text text-cases">
+              En general, se supone que la mortalidad en la FPI es el resultado
+              de una enfermedad pulmonar fibrótica progresiva que conduce a
+              insuficiencia respiratoria. Sin embargo, también se reconoce la
+              influencia de factores como hipertensión pulmonar o exacerbaciones
+              agudas. Aún se requieren más estudios clínicos para comprender
+              completamente su impacto.
+            </p>
+          </div>
+          <div className="model model-complete-respiratory-system">
+            <KeyboardControlsWrapper
+              map={[
+                { name: "moveUp", keys: ["w"] },
+                { name: "pause", keys: ["p"] },
+              ]}
+            >
+              <Canvas
+                className="canvas canvas-complete-respiratory-system"
+                camera={{ position: [0, 0.5, 10] }}
+                shadows
+              >
+                <OrbitControls />
+                <directionalLight
+                  castShadow
+                  position={[5, 10, 5]}
+                  intensity={2}
+                  shadow-mapSize-width={2048}
+                  shadow-mapSize-height={2048}
+                  shadow-camera-near={1}
+                  shadow-camera-far={30}
+                  shadow-camera-left={-10}
+                  shadow-camera-right={10}
+                  shadow-camera-top={10}
+                  shadow-camera-bottom={-10}
+                />
+                <ambientLight intensity={0.4} />
+                <mesh
+                  receiveShadow
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  position={[0, -4, 0]}
+                >
+                  <planeGeometry args={[20, 20]} />
+                  <shadowMaterial opacity={0.3} />
+                </mesh>
+                <StagingIntro />
+                <CompleteSystem
+                  scale={12}
+                  position={[0, -1, 0]}
+                  castShadow
+                  receiveShadow
+                />
+              </Canvas>
+            </KeyboardControlsWrapper>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
