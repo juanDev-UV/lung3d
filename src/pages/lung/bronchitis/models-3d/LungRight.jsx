@@ -1,7 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unknown-property */
-import { useGLTF, Html, Text, Text3D } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { useGLTF, Html, Text, Text3D } from '@react-three/drei';import { useFrame } from '@react-three/fiber';
 import { useEffect, useRef, useState } from 'react';
 
 const LungRith = (props) => {
@@ -25,7 +23,7 @@ const LungRith = (props) => {
 
   const handlePointerEnter = () => {
     const hue = Math.random() * 360;
-    setTextColor(`hsl(${hue}, 100%, 50%)`);
+    setTextColor(`hsl(${hue}, 10%, 50%)`);
   };
 
   return (
