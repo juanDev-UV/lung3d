@@ -11,7 +11,7 @@ import Tree from "./models-3d/Tree";
 import Grass from "./models-3d/Grass";
 import MedalScene from "../quiz/MedalScene";
 import { useState, useEffect } from "react";
-import "./quiz.css";
+import "./Quiz.css";
 import useAuthStore from "../../stores/use-auth-store";
 import { saveScoreToFirestore } from "../../stores/firestore";
 
