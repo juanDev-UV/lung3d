@@ -1,33 +1,47 @@
-/* Estilos para el footer */
 html, body {
-    /* No es necesario definir display: flex aquí, ya que el footer no es un contenedor flex * 
-    /* Asegura que el cuerpo y el html ocupen toda la altura */
-    margin: 0;
-    height: 100%;
-  }
-  
-  .footer{
-    position: relative;
-  }
-  
-  /* Estilos para la lista de enlaces */
-  .footer ul {
-    list-style: none; /* Elimina los puntos de la lista */
-    padding: 0; /* Elimina el padding predeterminado de la lista */
-    margin: 0; /* Elimina el margen predeterminado de la lista */
-    display: flex; /* Convierte la lista en un contenedor flexbox */
-    justify-content: center; /* Centra los elementos horizontalmente */
-  }
-  
-  /* Estilos para los elementos de la lista (los <li>) */
-  .footer li {
-    margin: 0 50px; /* Margen a la izquierda y a la derecha de 50px */
-    font-size: 20px; /* Tamaño de fuente de 20px */
-  }
-  
-  /* Estilos para los enlaces */
-  .footer a {
-    /* Los estilos para los enlaces se definen aquí */
-    color: #ffffffb4; /* Color de texto */
-    text-decoration: none; /* Elimina el subrayado */
-  }
+  margin: 0;
+  height: 100%;
+}
+
+/* Footer siempre visible encima sin afectar layout */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(0, 0, 0); /* Fondo semitransparente */
+  z-index: 999; /* Asegura que esté por encima de otros elementos */
+  padding: 10px 0;
+  pointer-events: auto; /* Asegura que se pueda hacer clic en los enlaces */
+}
+
+/* Lista de enlaces */
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Elementos de la lista */
+.footer li {
+  margin: 0 50px;
+  font-size: 20px;
+}
+
+/* Enlaces */
+.footer a {
+  color: #ffffffb4;
+  text-decoration: none;
+}
+
+.footer li a {
+  display: inline-block; /* Necesario para que transform funcione correctamente */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer li a:hover {
+  transform: translateY(-5px) scale(1.1);
+  color: #ffffff; /* Cambia a blanco al hacer hover */
+}
