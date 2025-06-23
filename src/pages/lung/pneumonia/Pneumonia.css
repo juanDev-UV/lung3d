@@ -1,131 +1,206 @@
 .pneumonia-container {
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-    height: 100vh;
-    scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Secciones base */
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem clamp(1rem, 4vw, 5rem);
+  box-sizing: border-box;
+  transition: background-color 0.4s ease-in-out;
+}
+
+/* Contenido de las secciones */
+.section-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.row-normal {
+  flex-direction: row;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.text-content {
+  flex: 1;
+  max-width: 600px;
+  min-width: 280px;
+  text-align: justify; 
+}
+
+.text {
+  text-align: justify;
+  font-size: 1.8rem;
+  line-height: 1.7;
+  padding-top: 2rem;
+  color: inherit;
+}
+
+/* Modelos 3D */
+.model,
+.model-health-pack {
+  width: 100%;
+  max-width: 1100px;
+  height: 80vh;
+  padding-top: 4rem;
+}
+
+/* Títulos */
+.title {
+  display: inline-block;
+  padding: 0.6rem 2.5rem;
+  border: 0.2rem solid var(--gray);
+  border-radius: 5rem;
+  box-shadow: 0.4rem 0.4rem 0 rgba(84, 84, 84, 0.25);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.arrow {
+  text-align: center;
+  font-size: 4rem;
+  margin-top: 1rem;
+  animation: bounce 1.8s infinite;
+}
+
+/* Animación de flecha */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  .section {
-    height: 100vh;
-    scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    box-sizing: border-box;
+  50% {
+    transform: translateY(12px);
   }
-  
+}
+
+/* Colores por sección */
+
+/* Sección 1: Introducción */
+.section-intro {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.title-intro {
+  background-color: var(--green);
+  color: white;
+}
+
+.arrow-intro {
+  color: #00b39f;
+}
+
+/* Sección 2: Síntomas */
+.section-symptoms {
+  background-color: #00b39f;
+  color: white;
+}
+
+.title-symptoms {
+  background-color: white;
+  color: #333;
+}
+
+.arrow-symptoms {
+  color: white;
+}
+
+/* Sección 3: Tratamiento */
+.section-treatment {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.title-treatment {
+  background-color: var(--green);
+  color: white;
+}
+
+.arrow-treatment {
+  color: #00b39f;
+}
+
+/* Sección 4: Prevención */
+.section-prevention {
+  background-color: #00b39f;
+  color: white;
+}
+
+.title-prevention {
+  background-color: white;
+  color: #333;
+}
+
+.arrow-prevention {
+  color: white;
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
   .section-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    flex: 1;
+    flex-direction: column !important;
   }
-  
-  .row-normal {
-    flex-direction: row;
-  }
-  
-  .row-reverse {
-    flex-direction: row-reverse;
-  }
-  
-  .text-content {
-    flex: 1;
-    max-width: 600px;
-  }
-  
+
   .model {
-    padding-top: 5rem;
-    width: 1100px;
-    height: 80vh;
+    height: 50vh;
   }
 
-  .model-health-pack {
-    padding-top: 10rem;
-    width: 900px;
-    height: 80vh;
-  }
-
-
-  
-  .title {
-    display: flex;
-    justify-content: center;
-    padding: 0.7rem 1rem;
-    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
-    border: 0.2rem solid var(--gray);
-    border-radius: 10rem;
-    box-shadow: 0.5rem 0.5rem 0 rgba(84, 84, 84, 0.412);
-    font-size: 6rem;
-  }
-  
   .text {
-    text-align: center;
-    font-size: 2rem;
-    line-height: 1.6;
-    padding-top: 5rem;
+    font-size: 1.6rem;
+    padding-top: 1rem;
   }
-  
+
   .arrow {
-    text-align: center;
-    font-size: 5rem;
-    margin-top: 1rem;
+    font-size: 3rem;
   }
-  
-  /* Sección 1 */
-  .section-intro {
-    display: flex;
-    align-items: left;
-    background-color: #ffffff;
-    color: #333;
-  }
-  .title-intro {
-    display: flex;
-    align-items: left;
-    color: white;
-    background-color: var(--green);
-  }
-  .arrow-intro {
-    color: #00b39f;
-  }
-  
-  /* Sección 2 */
-  .section-symptoms {
-    background-color: #00b39f;
-    color: white;
-  }
-  .title-symptoms {
-    background-color: white;
-    color: #333;
-  }
-  .arrow-symptoms {
-    color: white;
-  }
-  
-  /* Sección 3 */
-  .section-treatment {
-    background-color: #ffffff;
-    color: #333;
-  }
-  .title-treatment {
-    background-color: var(--green);
-    color: white;
-  }
-  .arrow-treatment {
-    color: #00b39f;
-  }
-  
-  /* Sección 4 */
-  .section-cases {
-    background-color: #00b39f;
-    color: white;
-  }
-  .title-cases {
-    color: #333;
-    background-color: white;
-  }
+}
+
+.controls-label {
+  background: rgba(0, 0, 0, 0.65); /* un poquito más visible */
+  padding: 12px 18px; /* más espacio interno */
+  border-radius: 12px;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 3em; /* tamaño ligeramente mayor */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.07);
+  line-height: 1.6;
+  text-align: left;
+  min-width: 140px;
+  pointer-events: none;
+}
+
+.controls-label strong {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.5rem; /* más grande que antes */
+}
+
+.controls-label span {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 1.5rem;
+}
 
 
-  
+
+

@@ -46,13 +46,10 @@ const Lights = ({ type }) => {
 
       {type === "C" && (
         <>
-          {/* Luz ambiental tenue y fría */}
           <ambientLight intensity={2.5} color="#aaccff" />
-
-          {/* Luz direccional como luna llena */}
           <directionalLight
             ref={lightRef}
-            position={[4, 10, -4]} // posición elevada y lateral
+            position={[4, 10, -4]}
             intensity={1.2}
             color="#cce6ff"
             castShadow
@@ -68,9 +65,40 @@ const Lights = ({ type }) => {
         </>
       )}
 
+      {type === "D" && (
+        <>
+          {/* Luz ambiental tenue */}
+          <ambientLight intensity={0.3} color="#ddeeff" />
+
+          {/* Luz direccional fría desde un lado */}
+          <directionalLight
+            ref={lightRef}
+            position={[-5, 8, 5]}
+            intensity={1.4}
+            color="#a0c4ff"
+            castShadow
+            shadow-mapSize-width={2048}
+            shadow-mapSize-height={2048}
+            shadow-camera-left={-10}
+            shadow-camera-right={10}
+            shadow-camera-top={10}
+            shadow-camera-bottom={-10}
+            shadow-camera-near={0.5}
+            shadow-camera-far={50}
+          />
+
+          {/* Luz puntual cálida frontal */}
+          <pointLight
+            position={[0, 2, 5]}
+            intensity={0.6}
+            color="#ffe6cc"
+          />
+        </>
+      )}
     </>
   );
 };
 
 export default Lights;
+
 
