@@ -23,7 +23,7 @@ const Home = () => {
             tu salud respiratoria de manera visual y dinámica.
           </p>
   
-          <a href="/" className="btn">
+          <a href="/enfermedades" className="btn">
             Explora Tus Pulmones en 3D
             <span className="icon">
               <FontAwesomeIcon icon={faChevronRight} />

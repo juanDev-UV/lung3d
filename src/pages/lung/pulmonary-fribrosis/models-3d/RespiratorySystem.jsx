@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useGLTF, Text } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
+import { Html } from "@react-three/drei";
+
 
 const RespiratoryModel = (props) => {
   const { nodes, materials } = useGLTF(
@@ -69,6 +71,24 @@ const RespiratoryModel = (props) => {
       >
         Sistema Respiratorio
       </Text>
+
+      {/* HTML 3D: Botón para pausar/reanudar */}
+      <Html position={[0, -0.25, 0]} center>
+        <button
+          onClick={() => setIsRotating((prev) => !prev)}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#00b39f",
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+        >
+          {isRotating ? "Pausar rotación" : "Reanudar rotación"}
+        </button>
+      </Html>
     </group>
   );
 };
