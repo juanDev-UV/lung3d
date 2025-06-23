@@ -11,14 +11,16 @@ section {
     margin-top: 2rem;
     padding: 1rem;
     padding-left: 1rem;
-    padding-right: 1rem; /* Ajusta el padding-left si es necesario */
+    padding-right: 1rem;
+    /* Ajusta el padding-left si es necesario */
     border: var(--border);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     color: var(--green);
     cursor: pointer;
     font-size: 1.8rem;
-    transition: background 0.3s ease, color 0.3s ease; /* Transición para hover */
+    transition: background 0.3s ease, color 0.3s ease;
+    /* Transición para hover */
 }
 
 .btn span {
@@ -28,7 +30,8 @@ section {
     background: var(--green);
     color: #fff;
     margin-left: 0.5rem;
-    transition: background 0.3s ease, color 0.3s ease; /* Transición para hover */
+    transition: background 0.3s ease, color 0.3s ease;
+    /* Transición para hover */
 }
 
 .btn:hover {
@@ -43,25 +46,31 @@ section {
 
 .home {
     display: flex;
-    align-items: center;  /* Alinea verticalmente */ 
+    align-items: center;
+    /* Alinea verticalmente */
     gap: 1.5rem;
-    padding-top: 10rem;
-    padding-bottom: 3em;
 }
 
-.home .image { /* Usa una clase para la imagen */
-    flex: 1 1 45rem; /* Ajusta el tamaño según necesites */
-    max-width: 45%;    /* Evita que la imagen se haga demasiado grande */
+.home .image {
+    padding-top: 10rem;
+    /* Usa una clase para la imagen */
+    flex: 1 1 45rem;
+    /* Ajusta el tamaño según necesites */
+    max-width: 45%;
+    /* Evita que la imagen se haga demasiado grande */
 }
 
 .home .image img {
     width: 100%;
-    display: block;  /* Evita espacios en blanco debajo de la imagen */
+    display: block;
+    /* Evita espacios en blanco debajo de la imagen */
 }
 
-.home .content { /* Usa una clase para el contenido */
+.home .content {
+    /* Usa una clase para el contenido */
     flex: 1 1 45rem;
-    margin-top: -100px; /* Ajusta el tamaño según necesites */
+    align-items: center;
+    /* Ajusta el tamaño según necesites */
 }
 
 .home .content h3 {
@@ -76,4 +85,54 @@ section {
     color: var(--light-color);
     line-height: 1.8;
     padding: 1rem 0;
+}
+
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    margin-top: -130px;
+}
+
+.down-arrow {
+    font-size: 2rem;
+    color: #333;
+
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+}
+
+.card {
+    width: 180px;
+    height: 120px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.card:hover {
+    transform: scale(1.12) translateY(-12px);
+    box-shadow: 16px 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.card-link {
+    text-decoration: none;
 }

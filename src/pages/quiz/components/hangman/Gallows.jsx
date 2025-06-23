@@ -1,4 +1,4 @@
-import { useRef } from "react";
+/* eslint-disable react/no-unknown-property */
 
 const Gallows = () => {
   return (

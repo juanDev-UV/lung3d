@@ -6,18 +6,13 @@ const Footer = () => {
     <footer className = "footer"> 
       <ul > 
         <li> 
-          <Link to="/pulmon/bronquitis" >Bronquitis</Link>
+          <Link to="/acerca-de-nosotros" >Acerca de Nosotros</Link>
         </li>
-        <li >
-          <Link to="/pulmon/neumonia" >Neumonia</Link>
-        </li>
-        <li >
-          <Link to="/pulmon/fibrosis-pulmonar" >Fibrosis Pulmonar</Link>
-        </li>
-        <li >
-          <Link to="/pulmon/asma" >Asma</Link>
+        <li> 
+          <Link to="/mapa-del-sitio" >Mapa del Sitio</Link>
         </li>
       </ul>
+      @copyright2025
     </footer>
   );
 };

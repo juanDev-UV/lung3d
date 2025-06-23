@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unknown-property */
-import { useGLTF, Html, Text, Text3D } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { useGLTF, Html, Text, Text3D, OrbitControls, PositionalAudio } from '@react-three/drei';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, useState } from 'react';
 
 const LungRith = (props) => {
@@ -9,28 +8,85 @@ const LungRith = (props) => {
   const { nodes, materials } = useGLTF("/models-3d/lung-right.glb");
 
   const [isRotating, setIsRotating] = useState(true);
-  const isRotatingRef = useRef(isRotating); // sincronizar con useFrame
+  const isRotatingRef = useRef(isRotating);
+  const [textColor, setTextColor] = useState("white");
+  const soundRef = useRef();
+  const { camera } = useThree();
+  const keysPressed = useRef({});
+  const initialCameraPosition = useRef([0, 0, 3]); // Ajusta según lo necesario
 
-  const [textColor, setTextColor] = useState("black");
-
+  // Manejo de teclas WASD
   useEffect(() => {
-    isRotatingRef.current = isRotating; // actualizar ref cuando cambia el estado
-  }, [isRotating]);
+    const handleKeyDown = (e) => {
+      keysPressed.current[e.key.toLowerCase()] = true;
+      setIsRotating(false); // Detiene rotación si usuario usa controles
+    };
+    const handleKeyUp = (e) => {
+      keysPressed.current[e.key.toLowerCase()] = false;
+    };
 
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
+
+  // Animación por frame
   useFrame((state, delta) => {
+    const speed = 1.5;
+    const move = delta * speed;
+
+    if (keysPressed.current["w"]) camera.position.z -= move;
+    if (keysPressed.current["s"]) camera.position.z += move;
+    if (keysPressed.current["a"]) camera.position.x -= move;
+    if (keysPressed.current["d"]) camera.position.x += move;
+
     if (isRotatingRef.current && lungRightRef.current) {
       lungRightRef.current.rotation.y += 1 * delta;
     }
+
+    // Animación suave al reiniciar cámara
+    if (resettingCamera.current) {
+      const [targetX, targetY, targetZ] = initialCameraPosition.current;
+      camera.position.lerp({ x: targetX, y: targetY, z: targetZ }, 0.1);
+      camera.lookAt(-0.001, -0.1, -0.077);
+      const dist = camera.position.distanceTo({ x: targetX, y: targetY, z: targetZ });
+      if (dist < 0.01) resettingCamera.current = false;
+    }
   });
+
+  useEffect(() => {
+    isRotatingRef.current = isRotating;
+  }, [isRotating]);
 
   const handlePointerEnter = () => {
     const hue = Math.random() * 360;
-    setTextColor(`hsl(${hue}, 100%, 50%)`);
+    setTextColor(`hsl(${hue}, 70%, 60%)`);
   };
+
+  const resettingCamera = useRef(false);
+
+
 
   return (
     <group {...props} dispose={null}>
       <group ref={lungRightRef} position={[-0.001, -0.1, -0.077]}>
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          enableRotate={true}
+          makeDefault
+          keys={{
+            LEFT: 'ArrowLeft',
+            RIGHT: 'ArrowRight',
+            UP: 'ArrowUp',
+            BOTTOM: 'ArrowDown'
+          }}
+        />
+
         <mesh
           castShadow
           receiveShadow
@@ -139,13 +195,16 @@ const LungRith = (props) => {
       </group>
 
       {/* Botón HTML */}
-      <Html position={[0.3, 0, 0]} center>
+      <Html position={[-0.3, 0, 0]} center>
         <button
-          onClick={() => setIsRotating((prev) => !prev)}
+          onClick={() => {
+            setIsRotating((prev) => !prev);
+          soundRef.current?.play(); // 🔊 Reproducir sonido
+          }}
           style={{
             padding: '8px 16px',
-            backgroundColor: '#00b39f',
-            color: 'white',
+            backgroundColor: 'white',
+            color: 'black',
             border: '5px',
             borderRadius: '10px',
             cursor: 'pointer',
@@ -156,6 +215,48 @@ const LungRith = (props) => {
           {isRotating ? "Pausar rotación" : "Reanudar rotación"}
         </button>
       </Html>
+      {/* Botón: Reiniciar cámara */}
+      <Html position={[0.3, 0, 0]} center>
+        <button
+          onClick={() => {
+            resettingCamera.current = true;
+            setIsRotating(false);
+            soundRef.current?.play(); // 🔊 Reproducir sonido
+          }}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: '#f44336',
+            color: 'white',
+            border: 'none',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            fontSize: '12px'
+          }}
+        >
+          Reiniciar cámara
+        </button>
+      </Html>
+      <Html position={[0, -0.2, 0]} center>
+        <div style={{
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          color: 'white',
+          width: '250px',
+          padding: '6px 10px',
+          borderRadius: '8px',
+          fontSize: '12px',
+          textAlign: 'justify'
+        }}>
+          Usa <b>W, A, S, D</b> para mover la cámara
+        </div>
+      </Html>
+            {/* Sonido posicional */}
+            <PositionalAudio
+              ref={soundRef}
+              url="../sounds/click.mp3"
+              distance={5}
+              loop={false}
+            />
     </group>
   );
 };

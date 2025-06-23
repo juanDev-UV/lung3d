@@ -38,6 +38,12 @@
   .canvas {
     border-radius: 20rem;
   }
+
+  .canvas-health-pack{
+    border-radius: 20rem;
+    margin-top: -50px;
+  }
+  
   
   .model {
     padding-top: 5rem;
