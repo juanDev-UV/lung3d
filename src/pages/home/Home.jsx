@@ -2,13 +2,14 @@ import "./Home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const Home = () => {
   const enfermedades = [
-    { nombre: "Bronquitis", color: "#1ec4a2" },
-    { nombre: "Neumonía", color: "#1ec4a2" },
-    { nombre: "Fibrosis Pulmonar", color: "#1ec4a2" },
-    { nombre: "Asma", color: "#1ec4a2" },
+    { nombre: "Bronquitis", color: "#1ec4a2", ruta: "pulmon/bronquitis" },
+    { nombre: "Neumonía", color: "#1ec4a2", ruta: "pulmon/neumonia"  },
+    { nombre: "Fibrosis Pulmonar", color: "#1ec4a2", ruta: "pulmon/fibrosis-pulmonar"  },
+    { nombre: "Asma", color: "#1ec4a2", ruta: "pulmon/asma"  },
   ];
 
   return (
@@ -46,19 +47,19 @@ const Home = () => {
           <FontAwesomeIcon icon={faArrowDown} className="down-arrow" />
         </motion.div>
       </div>
-
       <div className="card-container">
         {enfermedades.map((enf, index) => (
-          <motion.div
-            key={index}
-            className="card"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2, duration: 0.5 }}
-            style={{ backgroundColor: enf.color }}
-          >
-            <h4>{enf.nombre}</h4>
-          </motion.div>
+          <Link to={enf.ruta} key={index} className="card-link">
+            <motion.div
+              className="card"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.5 }}
+              style={{ backgroundColor: enf.color }}
+            >
+              <h4>{enf.nombre}</h4>
+            </motion.div>
+          </Link>
         ))}
       </div>
     </>

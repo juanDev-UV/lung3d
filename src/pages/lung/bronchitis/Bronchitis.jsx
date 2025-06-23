@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { OrbitControls } from "@react-three/drei";
-import "./Bronchitis.css";
+import "./Bronchitis.css"
 import { Canvas } from "@react-three/fiber";
 import Nurse from "./models-3d/Nurse";
 import LungRith from "./models-3d/LungRight";
@@ -13,6 +13,9 @@ import LightsLungTransparent from "./lights/LightsLungTransparent";
 import StagingSymptoms from "./staging/StagingSymtoms";
 import { useLocation } from "react-router";
 import LightsNurse from "./lights/LightsNurse";
+import LightsHealthPack from "./lights/LightsHealthPack";
+import FloorHealth from "./models-3d/FloorHealth";
+import StagingHealth from "./staging/StagingHealth";
 
 
 const Bronchitis = () => {
@@ -26,7 +29,7 @@ const Bronchitis = () => {
         <div className="section-content row-reverse">
           <div className="text-content">
             <h2 className="title title-intro">Bronquitis</h2>
-            <p className="text text-intro">
+            <p className="text text-intro-bronchitis">
               La bronquitis es la inflamación de los bronquios, los vías
               respiratorias que llevan el aire a los pulmones. Puede ser aguda,
               causada generalmente por infecciones o crónica, vinculada al
@@ -41,7 +44,6 @@ const Bronchitis = () => {
               camera={{ position: [0, 0, 3] }}
               shadows={true}
               key={location.pathname}>
-              <OrbitControls />
               <LightsLungRight />
               <StagingSymptoms key={location.pathname}/>
               <directionalLight
@@ -75,7 +77,7 @@ const Bronchitis = () => {
             camera={{ position: [-0.5, 0, 2] }} 
             shadows={true}
             key={location.pathname}>
-              <OrbitControls />
+              <OrbitControls enableZoom={false}/>
               <LightsLungTransparent />
               <StagingSymptoms key={location.pathname}/>
               <directionalLight
@@ -108,7 +110,7 @@ const Bronchitis = () => {
             camera={{ position: [0, 0, 3] }}
             shadows={true}
             key={location.pathname}>
-              <OrbitControls />
+              <OrbitControls enableZoom={false}/>
               <LightsNurse />
               <directionalLight position={[5, 2, 10]} intensity={2} />
               <StagingSymptoms key={location.pathname}/>
@@ -124,24 +126,31 @@ const Bronchitis = () => {
       <section className="section section-cases">
         <div className="section-content row-normal">
           <div className="text-content">
-            <h3 className="title title-cases">Casos</h3>
+            <h3 className="title title-cases">Prevencion</h3>
             <p className="text text-cases">
-              En casos crónicos, la bronquitis puede derivar en enfermedad
-              pulmonar obstructiva crónica (EPOC), en cuyo caso el paciente
-              sufre de tos persistente durante años. Es un mito que los
-              antibióticos siempre curan la bronquitis, ya que solo son
-              efectivos en infecciones bacterianas, no en las virales.
+              La prevención de la bronquitis se basa en evitar 
+              los factores de riesgo que irritan o inflaman las 
+              vías respiratorias, como el humo del tabaco, la 
+              contaminación del aire y las infecciones respiratorias.
+              Evita el humo del tabaco, la contaminación y 
+              el contacto con personas enfermas. Lávate las 
+              manos con frecuencia, usa mascarilla si es necesario 
+              y mantén tu sistema inmune fuerte con buena alimentación, 
+              ejercicio y vacunas.
             </p>
           </div>
           <div className="model model-health-pack" >
             <Canvas className="canvas canvas-health-pack"
             camera={{ position: [3, 0, 5] }}
-            shadow={true}
+            shadows={true}
             key={location.pathname}>
-              <OrbitControls />
+              <OrbitControls enableZoom={false}/>
+              <LightsHealthPack/>
               <ambientLight intensity={1.5} />
               <directionalLight position={[5, 2, 10]} intensity={2} />
-              <HealthPack scale={4} />
+              <StagingHealth/>
+              <HealthPack scale={2} />
+              <FloorHealth/>
             </Canvas>
           </div>
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Canvas } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
@@ -94,7 +95,7 @@ const Hangman = () => {
 
   return (
     <div className="canvas-wrapper">
-      <Canvas shadows camera={{ position: [0, -1, 5] }}>
+      <Canvas shadows camera={{ position: [0, 1, 4] }}>
         <OrbitControls />
         <Physics>
           <Lights />
@@ -123,7 +124,7 @@ const Hangman = () => {
         {showMedal ? (
           <MedalScene score={score} />
         ) : (
-          <Html position={[0, 2.6, 0]}>
+          <Html position={[2, 2, 0]}>
             <div className="progress-bar-container">
               <div
                 className="progress-bar-fill"

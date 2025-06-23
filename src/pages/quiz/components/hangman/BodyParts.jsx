@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { Cylinder, Sphere } from "@react-three/drei";
 
 // Componente que dibuja partes del cuerpo según la cantidad de errores

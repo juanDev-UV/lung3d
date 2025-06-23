@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
 // src/quiz/components/hangman/Alphabet.jsx
 import { Text3D } from "@react-three/drei";
-import React from "react";
 
 const Alphabet = ({ onGuess, guessed, disabled, position = [0, 0, 0] }) => {
   const letters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");

@@ -1,0 +1,46 @@
+.site-map {
+    padding: 2rem 9%;
+}
+
+.sitemap-list {
+    padding: 6rem 0;
+    list-style: none;
+}
+
+.sitemap-list .btn {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.2rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    font-size: 1.6rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sitemap-list .btn span {
+    background: var(--green);
+    color: #fff;
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.sitemap-list .btn:hover {
+    background: var(--green);
+    color: #fff;
+}
+
+.sitemap-list .btn:hover span {
+    background: #fff;
+    color: var(--green);
+}
+
+.sub-list {
+    list-style: circle;
+    padding-left: 2rem;
+}

@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+/* eslint-disable react/no-unknown-property */
+import { useRef, useState, useEffect } from "react";
 import {
   useGLTF,
   Html,

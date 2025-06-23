@@ -14,6 +14,8 @@ import Login from "./pages/login/Login.jsx";
 import Diseases from "./pages/diseases/Diseases.jsx";
 import AboutUs from "./pages/about-us/AboutUs.jsx";
 import Profile from "./pages/profile/Profile.jsx";
+import SiteMap from "./pages/site-map/SiteMap.jsx";
+import RequireAuth from "./RequireAuth.jsx";
 
 // import App from "./App";
 
@@ -24,7 +26,8 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route index path="perfil" element={<Profile />} />
-        <Route path="quiz" element={<Quiz />} />
+        <Route path="quiz" element={<RequireAuth><Quiz /></RequireAuth>} />
+        <Route path="mapa-del-sitio" element={<SiteMap />} />
         <Route path="*" element={<NotFound />} />
         <Route path="iniciar-sesion" element={<Login />} />
         <Route path="enfermedades" element={<Diseases/>}/>

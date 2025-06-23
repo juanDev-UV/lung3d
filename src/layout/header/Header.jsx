@@ -19,13 +19,8 @@ const Header = () => {
         <NavLink to="/enfermedades" className="nav-item">
           Enfermedades
         </NavLink>
-        { userLooged && (
         <NavLink to="/quiz" className="nav-item">
           Quiz interactivo
-        </NavLink>
-        )}
-        <NavLink to="/acerca-de-nosotros" className="nav-item">
-          Acerca de nosotros
         </NavLink>
       </nav>
       {userLooged ? (
