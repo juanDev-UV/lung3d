@@ -50,6 +50,20 @@ const Lights = ({ type = "A", showHelper = false }) => {
         far: 30,
       },
     },
+    D: {
+      position: [0, 12, 0], // Luz cenital más elevada
+      intensity: 1.0,       // Menor intensidad para evitar sobreexposición
+      shadowMapSize: { width: 2048, height: 2048 },
+      bias: -0.001,         // Para suavizar sombras (opcional)
+      camera: {
+        left: -10,
+        right: 10,
+        top: 10,
+        bottom: -10,
+        near: 0.1,
+        far: 50,
+      },
+    }
   };
 
   const config = lightConfigs[type] || lightConfigs["A"];
