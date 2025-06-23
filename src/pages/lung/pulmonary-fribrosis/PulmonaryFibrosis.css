@@ -91,3 +91,29 @@
   .arrow-intro {
     color: #00b39f;
   }
+
+  /* Sección 2 */
+  .section-symptoms {
+    background-color: #00b39f;
+    color: white;
+  }
+  .title-symptoms {
+    background-color: white;
+    color: #333;
+  }
+  .arrow-symptoms {
+    color: white;
+  }
+
+  /* Sección 3 */
+  .section-treatment {
+    background-color: #ffffff;
+    color: #333;
+  }
+  .title-treatment {
+    background-color: var(--green);
+    color: white;
+  }
+  .arrow-treatment {
+    color: #00b39f;
+  }

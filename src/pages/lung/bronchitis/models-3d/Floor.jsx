@@ -15,8 +15,8 @@ const Floor = () => {
   });
 
   return (
-    <mesh rotation-x={-Math.PI / 2} position-y={-2} receiveShadow={true}>
-      <planeGeometry args={[15, 15]} />
+    <mesh rotation-x={-Math.PI / 2} position-y={-1} position-z={-1.3} receiveShadow={true}>
+      <circleGeometry args={[2, 4096]} />
       <meshStandardMaterial {...floorTexture} />
     </mesh>
   );
