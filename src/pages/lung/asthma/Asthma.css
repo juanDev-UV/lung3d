@@ -1,26 +1,33 @@
+/* CONTENEDOR PRINCIPAL */
 .asthma-container {
   scroll-behavior: smooth;
   overflow-y: scroll;
   height: 100vh;
   scroll-snap-type: y mandatory;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
 }
 
+/* SECCIONES GENERALES */
 .section {
   height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem clamp(1rem, 4vw, 5rem);
   box-sizing: border-box;
+  transition: background-color 0.4s ease-in-out;
 }
 
+/* CONTENIDO DENTRO DE CADA SECCIÓN */
 .section-content {
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
-  flex: 1;
 }
 
 .row-normal {
@@ -34,100 +41,119 @@
 .text-content {
   flex: 1;
   max-width: 600px;
-}
-
-.model {
-  padding-top: 5rem;
-  width: 1100px;
-  height: 80vh;
-  border-radius: 10rem;
-  overflow: hidden;
-}
-
-.model-health-pack {
-  padding-top: 10rem;
-  width: 900px;
-  height: 80vh;
-}
-
-.title {
-  display: flex;
-  justify-content: center;
-  padding: 0.7rem 1rem;
-  padding-left: 1rem; /* Ajusta el padding-left si es necesario */
-  border: 0.2rem solid var(--gray);
-  border-radius: 10rem;
-  box-shadow: 0.5rem 0.5rem 0 rgba(84, 84, 84, 0.412);
-  font-size: 6rem;
+  min-width: 280px;
+  text-align: justify;
 }
 
 .text {
+  text-align: justify;
+  font-size: 1.8rem;
+  line-height: 1.7;
+  padding-top: 2rem;
+  color: inherit;
+}
+
+/* MODELOS 3D */
+.model,
+.model-health-pack {
+  width: 100%;
+  max-width: 1100px;
+  height: 80vh;
+  padding-top: 4rem;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+/* TÍTULOS */
+.title {
+  display: inline-block;
+  padding: 0.6rem 2.5rem;
+  border: 0.2rem solid var(--gray);
+  border-radius: 5rem;
+  box-shadow: 0.4rem 0.4rem 0 rgba(84, 84, 84, 0.25);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  margin-bottom: 1rem;
   text-align: center;
-  font-size: 2rem;
-  line-height: 1.6;
-  padding-top: 5rem;
 }
 
 .arrow {
   text-align: center;
-  font-size: 5rem;
+  font-size: 4rem;
   margin-top: 1rem;
+  animation: bounce 1.8s infinite;
 }
 
-/* Sección 1 */
+/* ANIMACIÓN DE FLECHA */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+/* SECCIÓN 1: INTRODUCCIÓN */
 .section-intro {
-  display: flex;
-  align-items: left;
   background-color: #ffffff;
   color: #333;
 }
+
 .title-intro {
-  display: flex;
-  align-items: left;
-  color: white;
   background-color: var(--green);
+  color: white;
 }
+
 .arrow-intro {
   color: #00b39f;
 }
 
-/* Sección 2 */
+/* SECCIÓN 2: SÍNTOMAS */
 .section-symptoms {
   background-color: #00b39f;
   color: white;
 }
+
 .title-symptoms {
   background-color: white;
   color: #333;
 }
+
 .arrow-symptoms {
   color: white;
 }
 
-/* Sección 3 */
+/* SECCIÓN 3: TRATAMIENTO */
 .section-treatment {
   background-color: #ffffff;
   color: #333;
 }
+
 .title-treatment {
   background-color: var(--green);
   color: white;
 }
+
 .arrow-treatment {
   color: #00b39f;
 }
 
-/* Sección 4 */
-.section-cases {
+/* SECCIÓN 4: PREVENCIÓN */
+.section-prevention {
   background-color: #00b39f;
   color: white;
 }
-.title-cases {
-  color: #333;
+
+.title-prevention {
   background-color: white;
+  color: #333;
 }
 
-/* NUEVOS ESTILOS PARA LOS BOTONES */
+.arrow-prevention {
+  color: white;
+}
+
+/* BOTONES FLOTANTES */
 .button-container {
   position: absolute;
   bottom: 40px;
@@ -148,7 +174,7 @@
   font-size: 1.3rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
   width: 100%;
   transition: background-color 0.3s ease;
 }
@@ -169,10 +195,10 @@
   filter: brightness(0.9);
 }
 
-/* ESTILO PARA EL MENSAJE HTML DENTRO DEL CANVAS */
+/* TEXTO FLOTANTE EN CANVAS */
 .canvas-html-message {
-  background-color: transparent; /* Sin fondo blanco */
-  color: white; /* Letras blancas */
+  background-color: transparent;
+  color: white;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -183,6 +209,67 @@
   max-width: 220px;
   padding: 8px 12px;
   border-radius: 8px;
-  text-shadow: 0 0 5px rgba(0,0,0,0.6); /* para dar legibilidad */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
+/* ETIQUETAS DE CONTROL DE TECLADO */
+.controls-label {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 12px 18px;
+  border-radius: 12px;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 3em;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.07);
+  line-height: 1.6;
+  text-align: left;
+  min-width: 140px;
+  pointer-events: none;
+}
+
+.controls-label strong {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.controls-label span {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 1.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .section-content {
+    flex-direction: column !important;
+  }
+
+  .model,
+  .model-health-pack {
+    height: 50vh;
+  }
+
+  .text {
+    font-size: 1.6rem;
+    padding-top: 1rem;
+  }
+
+  .arrow {
+    font-size: 3rem;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
