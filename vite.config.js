@@ -5,30 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    // Subimos el umbral del aviso: los vendor 3D son grandes por naturaleza,
-    // pero ahora van en chunks compartidos y cacheables (no se duplican).
+    // Los vendor 3D son grandes por naturaleza; subimos el umbral del aviso.
+    // No usamos manualChunks manual: separar React en su propio chunk hacía
+    // que three-vendor (R3F) se evaluara antes que React y fallara con
+    // "Cannot read properties of undefined (reading 'useLayoutEffect')".
+    // Dejamos que Vite/Rollup resuelva el orden de dependencias automáticamente.
     chunkSizeWarningLimit: 900,
-    rollupOptions: {
-      output: {
-        // Agrupa las dependencias pesadas en chunks de vendor compartidos:
-        // el navegador los descarga UNA vez y los cachea para todas las páginas.
-        manualChunks(id) {
-          if (!id.includes('node_modules')) return
-          // Motor de física (WASM→JS, ~2 MB): su propio chunk.
-          if (id.includes('@dimforge') || id.includes('@react-three/rapier')) return 'rapier'
-          // Three.js + helpers de R3F/drei.
-          if (id.includes('node_modules/three') || id.includes('@react-three')) return 'three-vendor'
-          if (id.includes('firebase') || id.includes('@firebase')) return 'firebase'
-          if (
-            id.includes('react-router') ||
-            id.includes('node_modules/react-dom') ||
-            id.includes('node_modules/react/')
-          )
-            return 'react-vendor'
-          if (id.includes('framer-motion') || id.includes('gsap')) return 'motion'
-          return 'vendor'
-        },
-      },
-    },
   },
 })
