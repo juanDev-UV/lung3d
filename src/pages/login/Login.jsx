@@ -1,12 +1,12 @@
-import { useCallback} from 'react';
-import './Login.css';
-import { useNavigate } from "react-router";
+import { useCallback } from "react";
+import "./Login.css";
+import { Link, useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLungs } from "@fortawesome/free-solid-svg-icons";
-import useAuthStore from '../../stores/use-auth-store';
+import { faLungs, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import useAuthStore from "../../stores/use-auth-store";
 
 const Login = () => {
-  const {loginGoogleWithPopup} = useAuthStore();
+  const { loginGoogleWithPopup } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogin = useCallback(() => {
@@ -15,28 +15,34 @@ const Login = () => {
       .catch(() => navigate("/"));
   }, [loginGoogleWithPopup, navigate]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return (
-    <div className="login-container">
+    <section className="login-container">
+      <Link to="/" className="back-btn login-back">
+        <FontAwesomeIcon icon={faArrowLeft} /> Volver al inicio
+      </Link>
+
       <div className="login-panel">
-        <div className="logo">
-          <FontAwesomeIcon icon={faLungs} /> Respira3D
+        <div className="login-panel__banner" />
+        <div className="login-logo">
+          <FontAwesomeIcon icon={faLungs} />
         </div>
-        <h2 style={{fontSize: 25}}>Iniciar sesión</h2>
-        <form onSubmit={handleSubmit}>
-          <div className= "container-login-button">
-          <a className= "login-button-google" 
-              type = "button" 
-              onClick={handleLogin}>
-            Google<img src = "/images/icon-google.svg"/>
-          </a>
-          </div>
-        </form>
+
+        <h2 className="login-title">Iniciar sesión</h2>
+        <p className="login-subtitle">
+          Accede con tu cuenta para realizar el <strong>quiz interactivo</strong> y guardar tu
+          progreso.
+        </p>
+
+        <button type="button" className="google-btn" onClick={handleLogin}>
+          <img src="/images/icon-google.svg" alt="" className="google-btn__icon" />
+          Continuar con Google
+        </button>
+
+        <p className="login-note">
+          Usamos tu cuenta de Google solo para identificarte. No compartimos tu información.
+        </p>
       </div>
-    </div>
+    </section>
   );
 };
 

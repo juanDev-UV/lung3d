@@ -1,113 +1,105 @@
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0; /* Color de fondo similar a la imagen */
-  }
-  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 9rem 2rem 4rem;
+}
+.login-back {
+  align-self: flex-start;
+}
+
+.login-panel {
+  position: relative;
+  width: 100%;
+  max-width: 44rem;
+  background: var(--surface);
+  border: 1px solid rgba(16, 40, 34, 0.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 0 3.5rem 3.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.login-panel__banner {
+  height: 9rem;
+  margin: 0 -3.5rem 0;
+  background: var(--gradient);
+}
+
+.login-logo {
+  width: 8rem;
+  height: 8rem;
+  margin: -4.5rem auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 0.5rem solid var(--surface);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  font-size: 3.2rem;
+  color: var(--green);
+}
+
+.login-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.login-subtitle {
+  font-size: 1.55rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 1rem auto 2.5rem;
+  max-width: 32rem;
+}
+.login-subtitle strong {
+  color: var(--green-dark);
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.3rem 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 40, 34, 0.12);
+  background: #fff;
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.google-btn:hover {
+  border-color: var(--green);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.google-btn__icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.login-note {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
   .login-panel {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.51);
-    width: 600px; 
-    height: 580px;/* Ancho del panel */
+    padding: 0 2.2rem 2.8rem;
   }
-  
-  .logo {
-    width: 300px; /* Ajusta el tamaño del logo */
-    margin: 0 auto 20px;
-    display: block;
+  .login-panel__banner {
+    margin: 0 -2.2rem 0;
   }
-  
-  .login-panel h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-  }
-  
-  .input-group input {
-    box-shadow: 0.3rem 0.3rem 0 rgba(84, 84, 84, 0.2); 
-    width: 140%;
-    padding: 10px;
-    border: 1px solid #a6a6a6;
-    border-radius: 5px;
-    margin-right: 3rem;
-    box-sizing: border-box;
-  }
-  
-  .login-button {
-    width: 40%;
-    margin-top: 2rem;
-    padding: 1rem;
-    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
-    border: var(--border);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    background-color: white;
-    color: var(--green);
-    cursor: pointer;
-    font-size: 1.7rem;
-    transition: background 0.3s ease, color 0.3s ease; 
-  }
-  
-  .login-panel .inputs {
-    margin-right: 6rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .login-panel .container-login-button {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .login-button:hover {
-    background: var(--green);
-    color: #fff; /* Color de fondo al pasar el mouse */
-  }
-
-  
-
-  .login-button-google {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width:  40%;
-    margin-top: 2rem;
-    padding: 0.7rem 1rem;
-    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
-    border: 0.2rem solid var(--gray);
-    border-radius: var(--border-radius);
-    box-shadow: 0.5rem 0.5rem 0 rgba(84, 84, 84, 0.412);
-    color: var(--gray);
-    cursor: pointer;
-    font-size: 1.7rem;
-    transition: background 0.3s ease, color 0.3s ease; 
-  }
-
-  .login-button-google:hover {
-    background: var(--gray);
-    color: #fff; /* Color de fondo al pasar el mouse */
-  }
-
-
-  img {
-    width: 17% ;
-    display: flex;
-    flex: 0;
-  }
-
+}

@@ -1,99 +1,88 @@
-.quiz-wrapper {
+/* Contenedor del quiz (a pantalla completa) */
+.canvas-wrapper {
+  position: relative;
   width: 100%;
   height: 100vh;
-  position: relative;
   overflow: hidden;
+  background: radial-gradient(80% 80% at 50% 0%, #133029, #0a1614);
 }
 
+/* Regla global (la usan también las escenas de enfermedades) */
 canvas {
   width: 100% !important;
   height: 100% !important;
   display: block;
 }
 
-.quiz-container {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
-  border-radius: 1rem;
+/* HUD: progreso + pregunta, fijo sobre el canvas */
+.quiz-hud {
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: min(92%, 62rem);
+  padding: 1.8rem 2.2rem;
   text-align: center;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(16, 40, 34, 0.08);
+  border-radius: 1.8rem;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.5);
+  pointer-events: none; /* no bloquea el arrastre del modelo 3D */
 }
 
-.options {
+.quiz-hud__top {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.quiz-hud__badge {
+  color: var(--green-dark);
+  background: rgba(22, 160, 132, 0.12);
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+}
+.quiz-hud__score {
+  color: var(--text-soft);
 }
 
-.options button {
-  padding: 1rem;
-  font-size: 1rem;
-  background-color: #00b39f;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
+.quiz-hud__progress {
+  height: 0.9rem;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.quiz-hud__progress-fill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 999px;
+  transition: width 0.45s ease;
 }
 
-.feedback.correct {
-  color: green;
-  font-weight: bold;
-  margin-top: 1rem;
+.quiz-hud__question {
+  margin-top: 1.3rem;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text);
+  text-wrap: balance;
 }
 
-.feedback.incorrect {
-  color: red;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
+/* Panel del medallero (por si lo usa la escena final) */
 .medal-panel {
   text-align: center;
   background-color: white;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 1.4rem;
 }
 
-.progress-bar-container {
-  width: 300px;
-  height: 12px;
-  background-color: #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid #888;
-  margin-bottom: 1rem;
+@media (max-width: 600px) {
+  .quiz-hud {
+    top: 7rem;
+    padding: 1.4rem 1.6rem;
+  }
 }
-
-.progress-bar-fill {
-  height: 100%;
-  background-color: #00b39f;
-  transition: width 0.3s ease;
-}
-
-.question-text {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.progress-bar-container {
-  width: 300px;
-  height: 12px;
-  background-color: #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 0.5rem;
-  border: 1px solid #888;
-}
-.progress-bar-fill {
-  height: 100%;
-  background-color: #00b39f;
-  transition: width 0.3s ease;
-}
-

@@ -129,8 +129,6 @@
     padding-top: 11rem;
   }
   .title-intro {
-    display: flex;
-    align-items: left;
     color: white;
     background-color: var(--green);
   }

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Canvas } from "@react-three/fiber";
-import { Html, OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import Lights from "../quiz/lights/Lights";
 import Staging from "../quiz/staging/Staging";
@@ -95,6 +95,25 @@ const Hangman = () => {
 
   return (
     <div className="canvas-wrapper">
+      {/* HUD fijo sobre el canvas: progreso + pregunta */}
+      {!showMedal && (
+        <div className="quiz-hud">
+          <div className="quiz-hud__top">
+            <span className="quiz-hud__badge">
+              Pregunta {questionIndex + 1} de {questions.length}
+            </span>
+            <span className="quiz-hud__score">Aciertos: {score}</span>
+          </div>
+          <div className="quiz-hud__progress">
+            <div
+              className="quiz-hud__progress-fill"
+              style={{ width: `${(completedCount / questions.length) * 100}%` }}
+            />
+          </div>
+          <p className="quiz-hud__question">{currentQuestion.question}</p>
+        </div>
+      )}
+
       <Canvas shadows camera={{ position: [0, 1, 4] }}>
         <OrbitControls />
         <Physics>
@@ -121,21 +140,7 @@ const Hangman = () => {
           )}
         </Physics>
 
-        {showMedal ? (
-          <MedalScene score={score} />
-        ) : (
-          <Html position={[2, 2, 0]}>
-            <div className="progress-bar-container">
-              <div
-                className="progress-bar-fill"
-                style={{
-                  width: `${(completedCount / questions.length) * 100}%`,
-                }}
-              />
-            </div>
-            <div className="question-text">{currentQuestion.question}</div>
-          </Html>
-        )}
+        {showMedal && <MedalScene score={score} />}
       </Canvas>
     </div>
   );
