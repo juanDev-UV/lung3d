@@ -1,138 +1,269 @@
-section {
-    padding: 2rem 9%;
-
-}
-
-.btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    margin-top: 2rem;
-    padding: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    /* Ajusta el padding-left si es necesario */
-    border: var(--border);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    color: var(--green);
-    cursor: pointer;
-    font-size: 1.8rem;
-    transition: background 0.3s ease, color 0.3s ease;
-    /* Transición para hover */
-}
-
-.btn span {
-    padding: 0.7rem 1rem;
-
-    border-radius: 0.5rem;
-    background: var(--green);
-    color: #fff;
-    margin-left: 0.5rem;
-    transition: background 0.3s ease, color 0.3s ease;
-    /* Transición para hover */
-}
-
-.btn:hover {
-    background: var(--green);
-    color: #fff;
-}
-
-.btn:hover span {
-    color: var(--green);
-    background: #fff;
-}
-
 .home {
-    display: flex;
-    align-items: center;
-    /* Alinea verticalmente */
-    gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 12rem 9% 2rem;
 }
 
 .home .image {
-    padding-top: 10rem;
-    /* Usa una clase para la imagen */
-    flex: 1 1 45rem;
-    /* Ajusta el tamaño según necesites */
-    max-width: 45%;
-    /* Evita que la imagen se haga demasiado grande */
+  flex: 1 1 42rem;
+  max-width: 48%;
 }
 
 .home .image img {
-    width: 100%;
-    display: block;
-    /* Evita espacios en blanco debajo de la imagen */
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(22, 160, 132, 0.2));
 }
 
 .home .content {
-    /* Usa una clase para el contenido */
-    flex: 1 1 45rem;
-    align-items: center;
-    /* Ajusta el tamaño según necesites */
+  flex: 1 1 42rem;
+}
+
+.home__eyebrow {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: rgba(22, 160, 132, 0.1);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
 }
 
 .home .content h3 {
-    font-size: 3.5rem;
-    color: var(--black);
-    line-height: 1.8;
-    text-shadow: var(--text-shadow);
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  line-height: 1.2;
+  text-align: left;
+  text-wrap: balance;
+}
+
+.home__title-accent {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .home .content p {
-    font-size: 1.7rem;
-    color: var(--light-color);
-    line-height: 1.8;
-    padding: 1rem 0;
+  position: relative;
+  font-size: 1.7rem;
+  color: var(--text-soft);
+  line-height: 1.85;
+  max-width: 56rem;
+  margin: 2rem 0 2.5rem;
+  padding: 1.8rem 2rem 1.8rem 2.4rem;
+  text-align: left;
+  text-wrap: pretty;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--green) 6%, white),
+    var(--surface)
+  );
+  border: 1px solid rgba(22, 160, 132, 0.14);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Barra de acento en degradado a la izquierda */
+.home .content p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8rem;
+  bottom: 0.8rem;
+  width: 0.5rem;
+  border-radius: 999px;
+  background: var(--gradient);
+}
+
+/* Frase clave resaltada */
+.home .content p strong {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+/* "3D" destacado tipo etiqueta */
+.home .content p mark {
+  background: color-mix(in srgb, var(--green) 18%, white);
+  color: var(--green-dark);
+  font-weight: 700;
+  padding: 0.1rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+/* Botón principal del hero */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.2rem 2rem;
+  border-radius: 999px;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  font-size: 1.7rem;
+  font-weight: 600;
+  width: fit-content;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.05);
+}
+.btn span.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .arrow-container {
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
-    margin-top: -130px;
+  display: flex;
+  justify-content: center;
+  margin: -3rem 0 2.5rem;
 }
-
 .down-arrow {
-    font-size: 2rem;
-    color: #333;
-
+  font-size: 3.4rem;
+  color: var(--green);
+  filter: drop-shadow(0 4px 10px rgba(22, 160, 132, 0.35));
 }
 
+/* Cards de enfermedades */
 .card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding: 1rem 2rem;
-}
-
-.card {
-    width: 180px;
-    height: 120px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 10px 6px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    transform-origin: center;
-    cursor: pointer;
-}
-
-.card h4 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-}
-
-.card:hover {
-    transform: scale(1.12) translateY(-12px);
-    box-shadow: 16px 12px 28px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem 2rem 5rem;
 }
 
 .card-link {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+.card {
+  position: relative;
+  width: 23rem;
+  min-height: 20rem;
+  border-radius: var(--radius);
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+  background:
+    radial-gradient(
+      120% 80% at 100% 0%,
+      color-mix(in srgb, var(--card-color) 12%, transparent),
+      transparent 60%
+    ),
+    var(--surface);
+  border: 1px solid color-mix(in srgb, var(--card-color) 18%, rgba(16, 40, 34, 0.06));
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Franja de color identitaria arriba */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0.6rem;
+  background: var(--card-color, var(--green));
+}
+
+/* Glow difuso del color al pasar el mouse */
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  right: -30%;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: var(--card-color, var(--green));
+  opacity: 0;
+  filter: blur(50px);
+  transition: opacity 0.4s ease;
+}
+
+.card:hover {
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px color-mix(in srgb, var(--card-color) 45%, transparent);
+}
+.card:hover::after {
+  opacity: 0.22;
+}
+
+.card__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  border-radius: 1.4rem;
+  font-size: 2.4rem;
+  color: var(--card-color, var(--green));
+  background: color-mix(in srgb, var(--card-color) 16%, white);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--card-color) 30%, transparent);
+  margin-top: 0.4rem;
+}
+.card:hover .card__icon {
+  transform: scale(1.06) rotate(-3deg);
+}
+
+.card h4 {
+  position: relative;
+  z-index: 1;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.card__cta {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--card-color, var(--green));
+}
+.card:hover .card__cta svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 880px) {
+  .home {
+    flex-direction: column;
+    padding-top: 10rem;
+    text-align: center;
+  }
+  .home .image,
+  .home .content {
+    max-width: 100%;
+  }
+  .home .content p {
+    margin-inline: auto;
+  }
+  .btn {
+    margin-inline: auto;
+  }
 }

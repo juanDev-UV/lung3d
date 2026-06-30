@@ -3,13 +3,34 @@
 :root {
   --gray: rgba(0, 0, 0, 0.700);
   --green: #16a085;
-  --green2:#1ec4a2;
+  --green2: #1ec4a2;
   --black: #444;
   --light-color: #777;
   --box-shadow: 0.5rem 0.5rem 0 rgba(22, 160, 132, 0.367);
   --text-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
   --border: 0.2rem solid var(--green);
-  --border-radius: 1.125rem
+  --border-radius: 1.125rem;
+
+  /* --- Sistema de diseño renovado --- */
+  --green-dark: #0e7a64;
+  --green-light: #5fe3c5;
+  --gradient: linear-gradient(135deg, #16a085, #1ec4a2 55%, #34d8b4);
+  --bg: #f4fbf9;
+  --surface: #ffffff;
+  --text: #1f2d2a;
+  --text-soft: #5b6b67;
+  --ring: rgba(22, 160, 132, 0.35);
+
+  --shadow-sm: 0 1px 3px rgba(16, 40, 34, 0.08);
+  --shadow-md: 0 8px 24px rgba(16, 40, 34, 0.1);
+  --shadow-lg: 0 18px 50px -12px rgba(22, 160, 132, 0.35);
+  --radius: 1.25rem;
+
+  /* Color identitario por enfermedad */
+  --c-asma: #f59e0b;
+  --c-bronquitis: #1ec4a2;
+  --c-neumonia: #ef4444;
+  --c-fibrosis: #8b5cf6;
 }
 
 * {
@@ -17,18 +38,116 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
   border: none;
   text-transform: none;
-  transition: all 0.2s ease-out;
   text-decoration: none;
+  /* Antes era `transition: all` (anima también el layout → jank).
+     Acotado a propiedades seguras: mantiene los hovers sin coste de rendimiento. */
+  transition:
+    color 0.2s ease-out,
+    background-color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    box-shadow 0.2s ease-out,
+    transform 0.2s ease-out,
+    opacity 0.2s ease-out;
+}
+
+/* Foco visible para navegación con teclado (accesibilidad). */
+:focus-visible {
+  outline: 0.2rem solid var(--green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loader de página para las rutas con carga diferida (Suspense). */
+.page-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  min-height: 60vh;
+  color: var(--green);
+  font-size: 1.6rem;
+}
+.page-loader__spinner {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 0.4rem solid rgba(22, 160, 132, 0.25);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: page-loader-spin 0.8s linear infinite;
+}
+@keyframes page-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__spinner {
+    animation-duration: 2s;
+  }
 }
 
 html {
   font-size: 62.5%;
   overflow-x: hidden;
-  scroll-padding-top: 7rem;
+  scroll-padding-top: 9rem;
   scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(30, 196, 162, 0.12), transparent 60%),
+    radial-gradient(50rem 40rem at -10% 10%, rgba(22, 160, 132, 0.1), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Utilidad de botón con gradiente reutilizable */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.1rem 2rem;
+  border-radius: 999px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--gradient);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.05);
+}
+
+/* Botón "volver" reutilizable */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: var(--surface);
+  border: 1px solid rgba(22, 160, 132, 0.2);
+  box-shadow: var(--shadow-sm);
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+}
+.back-btn:hover {
+  background: rgba(22, 160, 132, 0.08);
+  transform: translateX(-3px);
+}
+.back-btn svg {
+  font-size: 1.2rem;
 }
 
 

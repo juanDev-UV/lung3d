@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getTopScores } from "../../stores/firestore";
 
 const MedalScene = ({ score }) => {
-  const user = useAuthStore((state) => state.userLooged);
+  const user = useAuthStore((state) => state.userLogged);
   const [topScores, setTopScores] = useState([]);
 
   useEffect(() => {

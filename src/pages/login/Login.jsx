@@ -6,14 +6,14 @@ import { faLungs } from "@fortawesome/free-solid-svg-icons";
 import useAuthStore from '../../stores/use-auth-store';
 
 const Login = () => {
-  const {loginGoogleWithPopUp} = useAuthStore();
+  const {loginGoogleWithPopup} = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogin = useCallback(() => {
-    loginGoogleWithPopUp()
+    loginGoogleWithPopup()
       .then(() => navigate("/enfermedades"))
       .catch(() => navigate("/"));
-  }, [loginGoogleWithPopUp, navigate]);
+  }, [loginGoogleWithPopup, navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

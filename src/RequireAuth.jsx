@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 // components/RequireAuth.jsx
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router";
 import useAuthStore from "./stores/use-auth-store";
  // ajusta la ruta
 
 const RequireAuth = ({ children }) => {
-    const user = useAuthStore(state => state.userLooged);
+    const user = useAuthStore(state => state.userLogged);
     const location = useLocation();
 
     if (!user) {

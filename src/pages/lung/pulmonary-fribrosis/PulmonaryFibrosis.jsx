@@ -20,13 +20,12 @@ const PulmonaryFibrosis = () => {
           <div className="text-content">
             <h2 className="title title-intro">Fibrosis Pulmonar</h2>
             <p className="text text-intro">
-              La fibrosis pulmonar es una enfermedad caracterizada por la
-              formación de tejido cicatricial en los pulmones, lo que los hace
-              rígidos y dificulta la respiración y el paso del oxígeno a la
-              sangre. Se trata de una condición crónica y progresiva que puede
-              ser causada por diversas razones, incluyendo exposiciones
-              ambientales, enfermedades subyacentes o, en algunos casos, sin una
-              causa clara.
+              La fibrosis pulmonar se caracteriza por la formación de{" "}
+              <strong>tejido cicatricial</strong> en los pulmones, lo que los
+              vuelve rígidos y dificulta la respiración y el paso del oxígeno a la
+              sangre. Es una condición <strong>crónica y progresiva</strong> que
+              puede deberse a exposiciones ambientales, enfermedades subyacentes
+              o, en algunos casos, a una causa desconocida (idiopática).
             </p>
           </div>
           <div className="model model-respiratory-system">

@@ -48,7 +48,7 @@ const Hangman = () => {
   const [showMedal, setShowMedal] = useState(false);
   const [score, setScore] = useState(0);
 
-  const { userLooged } = useAuthStore();
+  const { userLogged } = useAuthStore();
   const currentQuestion = questions[questionIndex];
   const currentWord = currentQuestion.answer;
 
@@ -88,10 +88,10 @@ const Hangman = () => {
 
   // Guardar puntaje SOLO al final del quiz
   useEffect(() => {
-    if (showMedal && userLooged) {
-      saveScoreToFirestore(userLooged, score);
+    if (showMedal && userLogged) {
+      saveScoreToFirestore(userLogged, score);
     }
-  }, [showMedal, userLooged, score]);
+  }, [showMedal, userLogged, score]);
 
   return (
     <div className="canvas-wrapper">

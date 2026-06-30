@@ -10,12 +10,12 @@
 
 /* SECCIONES GENERALES */
 .section {
-  height: 100vh;
+  min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem clamp(1rem, 4vw, 5rem);
+  padding: 5rem clamp(1rem, 4vw, 5rem);
   box-sizing: border-box;
   transition: background-color 0.4s ease-in-out;
 }
@@ -27,7 +27,12 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: clamp(2rem, 5vw, 6rem);
+  width: 100%;
+  max-width: 136rem;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 5rem);
+  box-sizing: border-box;
 }
 
 .row-normal {
@@ -39,39 +44,70 @@
 }
 
 .text-content {
-  flex: 1;
-  max-width: 600px;
-  min-width: 280px;
-  text-align: justify;
+  position: relative;
+  flex: 1 1 34rem;
+  max-width: 50rem;
+  min-width: 28rem;
+  align-self: center;
+  padding: clamp(3rem, 4vw, 4.5rem);
+  border-radius: 2.6rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, currentColor 15%, transparent),
+    color-mix(in srgb, currentColor 7%, transparent)
+  );
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 26px 60px -28px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 color-mix(in srgb, currentColor 20%, transparent);
+  text-align: center;
+}
+.text-content::before {
+  content: "";
+  position: absolute;
+  top: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4.5rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 45%, transparent);
 }
 
 .text {
-  text-align: justify;
-  font-size: 1.8rem;
-  line-height: 1.7;
-  padding-top: 2rem;
+  text-align: center;
+  font-size: clamp(1.6rem, 1.8vw, 1.9rem);
+  line-height: 1.85;
+  margin-top: 2rem;
   color: inherit;
+  text-wrap: pretty;
 }
 
 /* MODELOS 3D */
 .model,
 .model-health-pack {
   width: 100%;
-  max-width: 1100px;
-  height: 80vh;
-  padding-top: 4rem;
-  border-radius: 3rem;
+  max-width: 96rem;
+  height: clamp(44rem, 78vh, 64rem);
+  padding-top: 2rem;
+  border-radius: 2.4rem;
   overflow: hidden;
+  box-shadow:
+    0 30px 70px -28px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 }
 
 /* TÍTULOS */
 .title {
   display: inline-block;
-  padding: 0.6rem 2.5rem;
-  border: 0.2rem solid var(--gray);
-  border-radius: 5rem;
-  box-shadow: 0.4rem 0.4rem 0 rgba(84, 84, 84, 0.25);
-  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  padding: 0.8rem 2.8rem;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.35);
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -97,6 +133,7 @@
 .section-intro {
   background-color: #ffffff;
   color: #333;
+  padding-top: 11rem;
 }
 
 .title-intro {
@@ -142,6 +179,7 @@
 .section-prevention {
   background-color: #00b39f;
   color: white;
+  padding-bottom: 12rem;
 }
 
 .title-prevention {

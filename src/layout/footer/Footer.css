@@ -1,47 +1,85 @@
-html, body {
-  margin: 0;
-  height: 100%;
-}
-
-/* Footer siempre visible encima sin afectar layout */
+/* Footer en flujo normal (ya no fijo tapando contenido) */
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  background: rgb(0, 0, 0); /* Fondo semitransparente */
-  z-index: 999; /* Asegura que esté por encima de otros elementos */
-  padding: 10px 0;
-  pointer-events: auto; /* Asegura que se pueda hacer clic en los enlaces */
+  margin-top: 6rem;
+  padding: 4rem 4% 3rem;
+  background:
+    radial-gradient(60rem 30rem at 50% -40%, rgba(30, 196, 162, 0.18), transparent 70%),
+    linear-gradient(180deg, #0f1c19, #07110f);
+  color: #cfe9e1;
 }
 
-/* Lista de enlaces */
-.footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Línea de acento superior con degradado */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient);
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-/* Elementos de la lista */
-.footer li {
-  margin: 0 50px;
-  font-size: 20px;
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+}
+.footer__brand svg {
+  color: var(--green-light);
+  font-size: 2.6rem;
 }
 
-/* Enlaces */
-.footer a {
-  color: #ffffffb4;
+.footer__links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+}
+.footer__links a {
+  color: #9fc7bd;
+  font-size: 1.5rem;
   text-decoration: none;
 }
-
-.footer li a {
-  display: inline-block; /* Necesario para que transform funcione correctamente */
-  transition: transform 0.3s ease, color 0.3s ease;
+.footer__links a:hover {
+  color: #fff;
 }
 
-.footer li a:hover {
-  transform: translateY(-5px) scale(1.1);
-  color: #ffffff; /* Cambia a blanco al hacer hover */
+.footer__copy {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding-top: 2.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 1.35rem;
+  color: #8fb3aa;
+  letter-spacing: 0.02em;
+}
+.footer__copy strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, #5fe3c5, #34d8b4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 600px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
 }

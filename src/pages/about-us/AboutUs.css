@@ -1,69 +1,130 @@
-section {
-    padding: 2rem 9%;
-}
-
 .about-us {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding-top: 13rem;
-    padding-bottom: 7rem;
+  padding: 9rem 9% 4rem;
 }
 
-/* Asegura que en pantallas grandes, la imagen esté a la derecha */
-@media (min-width: 768px) {
-    .about-us {
-        flex-direction: row-reverse; /* Imagen a la derecha */
-        align-items: center;
-    }
+.grad {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.about-us .image-about-us {
-    flex: 1;
-    max-width: 40%;
-    display: flex;
-    justify-content: right; /* Centra la imagen */
+/* HERO */
+.about__hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.about__hero-text {
+  flex: 1 1 40rem;
+}
+.about__hero-img {
+  flex: 1 1 30rem;
+  max-width: 38%;
+  display: flex;
+  justify-content: center;
+}
+.about__hero-img img {
+  width: 100%;
+  max-width: 40rem;
+  display: block;
+  filter: drop-shadow(0 20px 45px rgba(22, 160, 132, 0.2));
 }
 
-.about-us .image-about-us img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: flex; /* Evita espacios en blanco debajo de la imagen */
+.about__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: rgba(22, 160, 132, 0.1);
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  margin-bottom: 1.6rem;
+}
+.about__hero-text h3 {
+  font-size: 4.2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+.about__hero-text p {
+  font-size: 1.7rem;
+  line-height: 1.85;
+  color: var(--text-soft);
+  max-width: 56rem;
+  margin-bottom: 1.2rem;
+  text-wrap: pretty;
+}
+.about__hero-text strong {
+  color: var(--green-dark);
 }
 
-.about-us .content {
-    flex: 1;
-    max-width: 60%;
-    text-align: justify; /* Asegura alineación del texto */
+/* SERVICIOS */
+.about__services-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 6rem 0 3rem;
+}
+.about__services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1.8rem;
+}
+.service-card {
+  background: var(--surface);
+  border: 1px solid rgba(16, 40, 34, 0.06);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-md);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(22, 160, 132, 0.3);
+}
+.service-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  border-radius: 1.4rem;
+  font-size: 2.3rem;
+  color: var(--green-dark);
+  background: rgba(22, 160, 132, 0.12);
+  margin-bottom: 1.5rem;
+}
+.service-card h4 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+}
+.service-card p {
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: var(--text-soft);
 }
 
-.about-us .content h3 {
-    font-size: 5rem;
-    color: var(--black);
-    line-height: 1.8;
-    text-shadow: var(--text-shadow);
+@media (max-width: 880px) {
+  .about__hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .about__hero-img {
+    max-width: 65%;
+  }
+  .about__eyebrow {
+    justify-content: center;
+  }
 }
-
-
-
-.about-us .content p {
-    font-size: 2rem;
-    color: var(--light-color);
-    line-height: 1.8;
-    padding: 1rem 0;
-}
-
-.custom-list {
-    list-style-type: disc; /* Usa viñetas estándar */
-    font-size: 1.1rem; /* Tamaño del texto */
-    color: #333; /* Color del texto */
-    padding-left: 20px; /* Espaciado de la lista */
-    line-height: 1.8; /* Espaciado entre líneas */
-}
-
-.custom-list li {
-    margin-bottom: 5px; /* Espacio entre elementos */
-}
-

@@ -5,10 +5,10 @@ import { faLungs } from "@fortawesome/free-solid-svg-icons";
 import useAuthStore from "../../stores/use-auth-store";
 
 const Header = () => {
-  const { userLooged } = useAuthStore();
+  const { userLogged } = useAuthStore();
 
   return (
-    <header>
+    <header className="site-header">
       <div className="logo" >
         <FontAwesomeIcon icon={faLungs} /> Respira3D
       </div>
@@ -23,7 +23,7 @@ const Header = () => {
           Quiz interactivo
         </NavLink>
       </nav>
-      {userLooged ? (
+      {userLogged ? (
         <NavLink to="/perfil" className="button-login">
           Perfil
         </NavLink>

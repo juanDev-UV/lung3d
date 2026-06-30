@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 export function Tree(props) {
-  const { nodes, materials } = useGLTF("models-3d/tree.glb");
+  const { nodes, materials } = useGLTF("/models-3d/tree.glb");
   const treeRef = useRef();
 
   return (
@@ -26,5 +26,5 @@ export function Tree(props) {
   );
 }
 
-useGLTF.preload("models-3d/tree.glb");
+useGLTF.preload("/models-3d/tree.glb");
 export default Tree;

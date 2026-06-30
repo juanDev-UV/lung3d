@@ -248,10 +248,12 @@
             <div className="text-content">
               <h2 className="title title-intro">Asma</h2>
               <p className="text text-intro">
-                El asma es una enfermedad crónica de las vías respiratorias que
-                causa inflamación y estrechamiento de los bronquios. Esto provoca
-                dificultad para respirar, opresión en el pecho y otros síntomas
-                respiratorios, especialmente durante crisis asmáticas.
+                El asma es una enfermedad <strong>crónica</strong> de las vías
+                respiratorias que causa inflamación y estrechamiento de los
+                bronquios. Esto provoca dificultad para respirar, opresión en el
+                pecho, tos y silbidos, sobre todo durante las{" "}
+                <strong>crisis asmáticas</strong>. Con el tratamiento adecuado,
+                puede controlarse y permitir una vida plena.
               </p>
             </div>
 

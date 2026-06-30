@@ -6,12 +6,12 @@
   }
   
   .section {
-    height: 100vh;
+    min-height: 100vh;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
+    padding: 5rem 1rem;
     box-sizing: border-box;
   }
   
@@ -19,7 +19,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(2rem, 5vw, 6rem);
     flex: 1;
+    width: 100%;
+    max-width: 136rem;
+    margin: 0 auto;
+    padding: 0 clamp(2rem, 5vw, 5rem);
+    box-sizing: border-box;
   }
   
   .row-normal {
@@ -31,51 +38,79 @@
   }
   
   .text-content {
-    flex: 1;
-    max-width: 600px;
+    position: relative;
+    flex: 1 1 34rem;
+    max-width: 50rem;
+    min-width: 28rem;
+    align-self: center;
+    text-align: center;
+    padding: clamp(3rem, 4vw, 4.5rem);
+    border-radius: 2.6rem;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, currentColor 15%, transparent),
+      color-mix(in srgb, currentColor 7%, transparent)
+    );
+    border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+    backdrop-filter: blur(6px);
+    box-shadow:
+      0 26px 60px -28px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 color-mix(in srgb, currentColor 20%, transparent);
+  }
+  /* Acento decorativo superior del panel */
+  .text-content::before {
+    content: "";
+    position: absolute;
+    top: 1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4.5rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, currentColor 45%, transparent);
   }
 
-  .canvas {
-    border-radius: 20rem;
-  }
-
-  .canvas-health-pack{
-    border-radius: 20rem;
-    margin-top: -50px;
+  .canvas,
+  .canvas-health-pack {
+    border-radius: 2.4rem;
+    box-shadow:
+      0 30px 70px -28px rgba(0, 0, 0, 0.55),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   }
   
   
   .model {
-    padding-top: 5rem;
-    width: 1200px;
-    height: 10vh;
-    border-radius: 10rem;
+    width: 100%;
+    max-width: 96rem;
+    height: clamp(44rem, 78vh, 64rem);
+    border-radius: 2rem;
   }
 
   .model-health-pack {
-    padding-top: 10rem;
-    width: 900px;
-    height: 80vh;
+    width: 100%;
+    max-width: 96rem;
+    height: clamp(44rem, 78vh, 64rem);
   }
 
 
   
   .title {
-    display: flex;
-    justify-content: center;
-    padding: 0.7rem 1rem;
-    padding-left: 1rem; /* Ajusta el padding-left si es necesario */
-    border: 0.2rem solid var(--gray);
-    border-radius: 10rem;
-    box-shadow: 0.5rem 0.5rem 0 rgba(84, 84, 84, 0.412);
-    font-size: 6rem;
+    display: inline-block;
+    padding: 0.8rem 2.8rem;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.35);
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
   }
-  
+
   .text {
     text-align: center;
-    font-size: 2rem;
-    line-height: 1.6;
-    padding-top: 5rem;
+    font-size: clamp(1.6rem, 1.8vw, 1.9rem);
+    line-height: 1.85;
+    margin-top: 2.2rem;
+    text-wrap: pretty;
   }
   
   .arrow {
@@ -91,6 +126,7 @@
     align-items: left;
     background-color: #ffffff;
     color: #333;
+    padding-top: 11rem;
   }
   .title-intro {
     display: flex;
@@ -132,6 +168,7 @@
   .section-cases {
     background-color: #00b39f;
     color: white;
+    padding-bottom: 12rem;
   }
   .title-cases {
     color: #333;

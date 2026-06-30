@@ -305,11 +305,12 @@ const Pneumonia = () => {
           >
             <h2 className="title title-intro">Neumonía</h2>
             <p className="text text-intro">
-              La neumonía es una infección pulmonar que causa inflamación en los sacos
-              de aire, llenándolos de líquido o pus. Afecta la respiración, produce
-              fiebre, tos y fatiga, y puede ser potencialmente grave sin el tratamiento
-              adecuado. Es causada por bacterias, virus o incluso hongos, y afecta
-              especialmente a personas con sistemas inmunitarios debilitados.
+              La neumonía es una <strong>infección pulmonar</strong> que inflama los
+              sacos de aire (alvéolos) y los llena de líquido o pus. Dificulta la
+              respiración y produce fiebre, tos y fatiga; sin el tratamiento adecuado
+              puede ser grave. La causan <strong>bacterias, virus u hongos</strong> y
+              afecta especialmente a niños, adultos mayores y personas con el sistema
+              inmunitario debilitado.
             </p>
           </motion.div>
           <div className="model model-pneumonia">
@@ -560,8 +561,7 @@ const Pneumonia = () => {
             </KeyboardControls>
           </div>
         </div>
-        <div className="arrow arrow-prevention">▼</div>
-      </section>    
+      </section>
     </div>
   );
 };

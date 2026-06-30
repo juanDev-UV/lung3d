@@ -1,59 +1,325 @@
-section {
-    padding: 2rem 9%;
-}
-
 .diseases {
-    display: flex;
-    align-items: center;  /* Alinea verticalmente */
-    flex-wrap: wrap;       /* Permite envolver en pantallas pequeñas */
-    gap: 1.5rem;
-    padding-top: 10rem;
-    padding-bottom: 3rem;
+  padding: 6.5rem 9% 4rem;
 }
 
-.diseases .image { /* Usa una clase para la imagen */
-    flex: 1 1 45rem; /* Ajusta el tamaño según necesites */
-    max-width: 45%;    /* Evita que la imagen se haga demasiado grande */
+/* Baja solo el botón (sin mover el resto): se desplaza visualmente. */
+.diseases .back-btn {
+  position: relative;
+  top: 2.4rem;
+  margin-bottom: 4rem;
 }
 
-.diseases .image img {
-    width: 100%;
-    display: block;  /* Evita espacios en blanco debajo de la imagen */
+.grad {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.diseases .content {
-    margin-top: -100px;
-    flex: 1 1 45rem;
+/* ---------- HERO ---------- */
+.diseases__hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.diseases__hero-text {
+  flex: 1 1 40rem;
+}
+.diseases__hero-img {
+  flex: 1 1 30rem;
+  max-width: 38%;
+}
+.diseases__hero-img img {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 20px 45px rgba(22, 160, 132, 0.2));
 }
 
-.diseases .content h3 {
-    font-size: 4rem;
-    margin-bottom: 4px;
-    color: var(--black);
-    line-height: 2;
-    text-shadow: var(--text-shadow);
+.diseases__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: rgba(22, 160, 132, 0.1);
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  margin-bottom: 1.6rem;
+}
+.diseases__hero-text h3 {
+  font-size: 4.2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  text-wrap: balance;
+}
+.diseases__hero-text p {
+  font-size: 1.7rem;
+  line-height: 1.85;
+  color: var(--text-soft);
+  max-width: 52rem;
+  text-wrap: pretty;
+}
+.diseases__hero-text mark {
+  background: color-mix(in srgb, var(--green) 18%, white);
+  color: var(--green-dark);
+  font-weight: 700;
+  padding: 0.1rem 0.6rem;
+  border-radius: 0.5rem;
+}
+.diseases__hero-text strong {
+  color: var(--green-dark);
 }
 
-.text1 {
-    float: left
+.diseases__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid rgba(16, 40, 34, 0.08);
+  box-shadow: var(--shadow-sm);
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+}
+.chip svg {
+  color: var(--green);
 }
 
-.text2 {
-    float: right
+/* ---------- TIPOS (Crónicas / Agudas) ---------- */
+.diseases__lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+  margin-top: 5rem;
+}
+.disease-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid rgba(16, 40, 34, 0.06);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.disease-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0.5rem;
+}
+.disease-card--cronicas::before {
+  background: var(--c-fibrosis);
+}
+.disease-card--agudas::before {
+  background: var(--c-neumonia);
 }
 
-.diseases .content h1 {
-    font-size: 2rem;
-    line-height: 1.8;
-    margin-top: 50px;
-    margin-bottom: 1px;
-    margin-right: 1px;
-    margin-left: 1px;
+.disease-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+  margin-bottom: 2rem;
+}
+.disease-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  border-radius: 1.3rem;
+  font-size: 2.1rem;
+}
+.disease-card--cronicas .disease-card__icon {
+  color: var(--c-fibrosis);
+  background: color-mix(in srgb, var(--c-fibrosis) 14%, white);
+}
+.disease-card--agudas .disease-card__icon {
+  color: var(--c-neumonia);
+  background: color-mix(in srgb, var(--c-neumonia) 14%, white);
+}
+.disease-card__head h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.disease-card__head p {
+  font-size: 1.45rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+  margin-top: 0.3rem;
 }
 
-.diseases .content p {
-    font-size: 1.7rem;
-    color: var(--light-color);
-    line-height: 1.8;
-    padding: 1rem 0;
+.disease-card ul {
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+.disease-card li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.55rem;
+  color: var(--text);
+  padding: 0.9rem 1.2rem;
+  background: color-mix(in srgb, var(--green) 4%, white);
+  border-radius: 0.9rem;
+}
+.disease-card li svg {
+  font-size: 1.1rem;
+  color: #fff;
+  background: var(--green);
+  padding: 0.45rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.disease-card--cronicas li svg {
+  background: var(--c-fibrosis);
+}
+.disease-card--agudas li svg {
+  background: var(--c-neumonia);
+}
+
+/* ---------- EXPLORA EN 3D ---------- */
+.diseases__explore-header {
+  text-align: center;
+  margin: 6rem 0 3rem;
+}
+.diseases__explore-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.diseases__explore-header p {
+  font-size: 1.6rem;
+  color: var(--text-soft);
+  margin-top: 0.8rem;
+}
+
+.diseases__explore {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 1.8rem;
+}
+.explore-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: 100%;
+  padding: 2.2rem;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(
+      120% 90% at 100% 0%,
+      color-mix(in srgb, var(--card-color) 12%, transparent),
+      transparent 55%
+    ),
+    var(--surface);
+  border: 1px solid color-mix(in srgb, var(--card-color) 18%, rgba(16, 40, 34, 0.06));
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  overflow: hidden;
+}
+.explore-card::after {
+  content: "";
+  position: absolute;
+  bottom: -45%;
+  right: -25%;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  background: var(--card-color);
+  opacity: 0;
+  filter: blur(48px);
+  transition: opacity 0.4s ease;
+}
+.explore-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 1px color-mix(in srgb, var(--card-color) 45%, transparent);
+}
+.explore-card:hover::after {
+  opacity: 0.22;
+}
+.explore-card__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  border-radius: 1.4rem;
+  font-size: 2.4rem;
+  color: var(--card-color, var(--green));
+  background: color-mix(in srgb, var(--card-color) 16%, white);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--card-color) 30%, transparent);
+}
+.explore-card:hover .explore-card__icon {
+  transform: scale(1.06) rotate(-3deg);
+}
+.explore-card__body {
+  position: relative;
+  z-index: 1;
+}
+.explore-card__name {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.explore-card__desc {
+  display: block;
+  font-size: 1.45rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+.explore-card__cta {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--card-color, var(--green));
+}
+.explore-card:hover .explore-card__cta svg {
+  transform: translateX(5px);
+}
+
+@media (max-width: 880px) {
+  .diseases__hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .diseases__hero-img {
+    max-width: 68%;
+  }
+  .diseases__eyebrow,
+  .diseases__chips {
+    justify-content: center;
+  }
+  .disease-card__head {
+    text-align: left;
+  }
 }

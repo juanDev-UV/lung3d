@@ -1,12 +1,5 @@
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999; /* Asegura que esté por encima de todo */
-  background-color: #000000cc; /* Fondo semitransparente opcional */
-  padding: 1rem 0;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave */
+.layout-content {
+  min-height: 75vh;
 }
 
 .container {
@@ -23,10 +16,4 @@
   color: var(--light-color);
   margin-left: 2rem;
   display: inline-block;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.nav-item:hover {
-  color: var(--green);
-  transform: translateY(-4px) scale(1.1);
 }

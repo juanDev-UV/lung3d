@@ -30,13 +30,13 @@ const Bronchitis = () => {
           <div className="text-content">
             <h2 className="title title-intro">Bronquitis</h2>
             <p className="text text-intro-bronchitis">
-              La bronquitis es la inflamación de los bronquios, los vías
-              respiratorias que llevan el aire a los pulmones. Puede ser aguda,
-              causada generalmente por infecciones o crónica, vinculada al
-              tabaquismo o la exposición prolongada a contaminantes. Su
-              principal consecuencia es la dificultad para respirar debido a la
-              producción excesiva de moco y la inflamación de los conductos
-              bronquiales.
+              La bronquitis es la inflamación de los bronquios, las vías
+              respiratorias que llevan el aire a los pulmones. Puede ser{" "}
+              <strong>aguda</strong>, causada normalmente por infecciones, o{" "}
+              <strong>crónica</strong>, vinculada al tabaquismo o a la exposición
+              prolongada a contaminantes. Su principal consecuencia es la
+              dificultad para respirar, debido a la producción excesiva de moco y
+              a la inflamación de los conductos bronquiales.
             </p>
           </div>
           <div className="model model-lung-right" >
